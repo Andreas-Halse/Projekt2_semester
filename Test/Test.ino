@@ -7,7 +7,7 @@
 
 
 //Dette er en test.
-
+// elizabeth was here and smelled bad
 
 // the setup function runs once when you press reset or power the board
 void setup() {
