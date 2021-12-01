@@ -7,15 +7,16 @@
 #include <avr/io.h>
 #include <interrupt.h>
 #define F_CPU 16000000
+#define SIZE 8;
 ISR(TIMER1_COMPA_vect);
 ISR(TIMER3_OVF_vect);
 
 int volatile mario_funhouse;
-char nextMessage[8];
+char nextMessage[SIZE];
 
 int main()
 {
-
+	DDRK = 0x00; //data in pin pk7
 	DDRB = 0xFF;
 	TCCR3A = 0b00000000; // normal mode
 	TCCR3B = 0x02; //prescaler of 8
@@ -32,22 +33,31 @@ int main()
 
 ISR(TIMER3_OVF_vect)
 {
-	PORTB = 0x00; // dummy burst signal off
+	PORTK &= 0b01111111; // dummy burst signal off
 	TIMSK3 = 0x00; //disables overflow interrupt
 }
 
 ISR(TIMER1_COMPA_vect)
 {
-	PORTB = 0xFF; //  dummy burst signal on
-	TIMSK3 = 0x01;//overflow int enable
-	TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 me
+	
+	sendArray(nextMessage);
 }
 
 
-void sendArray(char* arrayPtr, bool bit)
+void sendArray(char* arrayPtr)
 {
+	if(mario_funhouse<SIZE)
+	{
 	if (*arrayPtr == '1')
 	{
-		PORTB |= 0b01000000;
+		PORTK |= 0b10000000;
 	}
+	else
+	{
+		PORTK &= 0b01111111;
+	}
+
+	}
+	TIMSK3 = 0x01;//overflow int enable
+	TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 me
 }
