@@ -7,6 +7,8 @@
 
 
 //Dette er en test.
+// elizabeth was here and smelled bad
+
 
 //works it??
 // the setup function runs once when you press reset or power the board
@@ -23,3 +25,4 @@ void loop() {
 
 // jeg vandt!!!!!!
 // DET HER VIRKER FAKTISK
+//Hej beate
