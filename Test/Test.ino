@@ -3,11 +3,11 @@
  Created:	12/1/2021 4:44:44 PM
  Author:	andreashalse
 */
-//hello
+//hello du lugter af lort
 
 
 //Dette er en test.
-
+// elizabeth was here and smelled bad
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -23,3 +23,4 @@ void loop() {
 
 // jeg vandt!!!!!!
 // DET HER VIRKER FAKTISK
+//Hej beate
