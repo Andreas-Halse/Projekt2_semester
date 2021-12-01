@@ -3,11 +3,11 @@
  Created:	12/1/2021 4:44:44 PM
  Author:	andreashalse
 */
-
+//hello
 
 
 //Dette er en test.
-//oscar er en tester
+
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -18,6 +18,8 @@ void setup() {
 void loop() {
   
 }
+
+//Kappel was here :^)
 
 // jeg vandt!!!!!!
 // DET HER VIRKER FAKTISK
