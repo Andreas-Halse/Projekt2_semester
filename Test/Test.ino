@@ -3,7 +3,7 @@
  Created:	12/1/2021 4:44:44 PM
  Author:	andreashalse
 */
-//hello
+//hello du lugter af lort
 
 
 //Dette er en test.
@@ -22,3 +22,4 @@ void loop() {
 //Kappel was here :^)
 
 // jeg vandt!!!!!!
+// DET HER VIRKER FAKTISK
