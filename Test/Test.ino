@@ -23,3 +23,4 @@ void loop() {
 
 // jeg vandt!!!!!!
 // DET HER VIRKER FAKTISK
+//Hej beate
