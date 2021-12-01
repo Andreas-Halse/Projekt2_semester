@@ -22,3 +22,4 @@ void loop() {
 //Kappel was here :^)
 
 // jeg vandt!!!!!!
+// DET HER VIRKER FAKTISK
