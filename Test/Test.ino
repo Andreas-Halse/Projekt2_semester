@@ -7,7 +7,7 @@
 
 
 //Dette er en test.
-
+//oscar er en tester
 
 // the setup function runs once when you press reset or power the board
 void setup() {
