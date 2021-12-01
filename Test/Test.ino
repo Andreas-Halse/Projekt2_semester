@@ -26,3 +26,5 @@ void loop() {
 // jeg vandt!!!!!!
 // DET HER VIRKER FAKTISK
 //Hej beate
+
+//sku vi aldri ha kaf?
