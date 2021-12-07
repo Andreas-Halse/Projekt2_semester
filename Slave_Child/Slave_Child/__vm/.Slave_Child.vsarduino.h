@@ -15,7 +15,6 @@
 #define _VSARDUINO_H_
 #define __AVR_atmega2560__
 #define __AVR_ATmega2560__
-#define _VMDEBUG 1
 #define F_CPU 16000000L
 #define ARDUINO 108016
 #define ARDUINO_AVR_MEGA2560
@@ -88,6 +87,6 @@ typedef void *__builtin_va_list;
 #define pgm_read_float(address_short) float()
 #define pgm_read_ptr(address_short)   short()
 
-#include "x10_Sender.ino"
+#include "Slave_Child.ino"
 #endif
 #endif
