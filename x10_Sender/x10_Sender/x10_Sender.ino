@@ -40,7 +40,7 @@ ISR(TIMER1_COMPA_vect)
 {
 	PORTB = 0xFF; //  dummy burst signal on
 	TIMSK3 = 0x01;//overflow int enable
-	TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 me
+	TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 ms
 }
 
 
