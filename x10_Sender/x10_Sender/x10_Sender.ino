@@ -9,9 +9,9 @@
 #define F_CPU 16000000
 #define SIZE 8
 
-bool bit = false;
-int volatile mario_funhouse = 0;
-char nextMessage[SIZE] = {'1','0','1','0','1','1','1','1'};
+bool bit = true;
+int volatile bitCounter = 0;
+char nextMessage[SIZE] = {'0','0','1','0','1','1','1','0'};
 char* nextBitPtr = nextMessage;
 
 
@@ -29,17 +29,19 @@ ISR(TIMER1_COMPA_vect)
 {
 	if(bit)
 	{
-		mario_funhouse++;
-		PORTB |= (1 << mario_funhouse);; //  dummy burst signal on
-		TIMSK3 = 0x01;//overflow interrupt enable
-		TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 ms
-		nextBitPtr++;
+		PORTB = 0xFF;
+		//bitCounter++;
+		//PORTB |= (1 << bitCounter); //  dummy burst signal on
+		//TIMSK3 = 0x01;//overflow interrupt enable
+		//TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 ms
+		//nextBitPtr++;
 	}
 	else
 	{
-		mario_funhouse++;
-		PORTB |= (0 << mario_funhouse);; //  dummy burst signal on
-		nextBitPtr++;
+		PORTB = 0x00;
+		////bitCounter++;
+		////PORTB |= (0 << bitCounter); //  dummy burst signal on
+		////nextBitPtr++;
 	}
 }
 
@@ -79,11 +81,11 @@ int main()
 	startAll();
 	for (;;)
 	{
-		if (mario_funhouse <= 7 && mario_funhouse >= 0)
+		if (bitCounter <= 7 && bitCounter >= 0)
 		{
 			checkBit(nextBitPtr);
 		}
-		if (mario_funhouse == 8)
+		if (bitCounter == 8)
 		{
 			cli();
 		}
