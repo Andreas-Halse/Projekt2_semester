@@ -6,7 +6,7 @@ char nextBitArray2[10] = { '1','1','1','1','1','1','1','1','0','0' };
 char nextBitArray3[10] = { '0','0','0','0','0','0','0','0','0','0' };
 volatile char* bit;														// global pointer to array of bits
 char a = 'a';															// global char for switch case
-
+bool stopReached = false;
 
 ISR(TIMER1_COMPA_vect);													// ISR prototype
 ISR(TIMER3_OVF_vect);													// ISR prototype
@@ -31,8 +31,9 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 	}
 	else if (*bit == '\0')
 	{
-		PORTB = 0b11111100;												// else turn on all LEDS
+		//PORTB = 0b11111100;												// else turn on all LEDS
 		bit -= 10;
+		stopReached = true;
 	}
 	else
 	{
@@ -44,30 +45,30 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 }
 
 void switchFunction() {
-	switch (PINA)
+	switch (a)
 	{
-	case 0b11111110:													// if case is 'k'
-		TIMSK1 = 0x00;													// disable interrupt
+	case 'a':													// if case is 'k'
+		TIMSK1 = 0x00;													// disable interrupt timer1
 
-		bit = nextBitArray1;
+		bit = nextBitArray1;											// change global pointer placement
 
 		TIFR1 |= 0b00000010;											// make sure reset flag is reset by writing a 1 to the TIFR flag
 		TIMSK1 = 0x02;													// enable interrupt
 		break;
 
-	case 0b11111101:													// if case is 'f'
-		TIMSK1 = 0x00;													// disable interrupt
+	case 'b':													// if case is 'f'
+		TIMSK1 = 0x00;													// disable interrupt timer1
 
-		bit = nextBitArray2;
+		bit = nextBitArray2;											// change global pointer placement
 
 		TIFR1 |= 0b00000010;											// make sure reset flag is reset by writing a 1 to the TIFR flag
 		TIMSK1 = 0x02;													// enable interrupt
 		break;
 			
-	case 0b11111011:													// if case is 'h'
-		TIMSK1 = 0x00;													// disable interrupt
+	case 'c':													// if case is 'h'
+		TIMSK1 = 0x00;													// disable interrupt timer1
 		
-		bit = nextBitArray3;
+		bit = nextBitArray3;											// change global pointer placement
 
 		TIFR1 |= 0b00000010;											// make sure reset flag is reset by writing a 1 to the TIFR flag
 		TIMSK1 = 0x02;													// enable interrupt
@@ -85,13 +86,13 @@ int main(void)
 	TCCR1B = 0b00001100;												// setup timer1
 	TCCR1A = 0x00;														//
 	TCCR3B = 0x02;														// setup timer3
-	OCR1A = 624;
+	OCR1A = 624;														// make timer start at 624
 	TIMSK1 = 0x02;														// enable interrupts
 	DDRB = 0xFF;														// set portB to output
 	sei();																// enable global interrupts
 	for (;;)
 	{
-		if (PINA != 0b11111111)
+		if (!stopReached)
 		{
 			switchFunction();
 		}
