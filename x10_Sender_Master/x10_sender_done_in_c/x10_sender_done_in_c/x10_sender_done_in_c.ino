@@ -42,7 +42,7 @@ ISR(TIMER1_COMPA_vect)
 	}
 	else
 	{
-		PORTB = 0x00;
+		PORTB = 0xFF;
 	}
 	TIMSK3 = 0x01;//overflow interrupt enable
 	TCNT3 = 63536; // x-value sent to timer 3 for overflow after 1 ms
