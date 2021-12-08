@@ -1,4 +1,3 @@
-
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
@@ -64,14 +63,14 @@ void myfunction() {
 				x = false;
 				nextBitArray[i] = '1';
 			}
-			else if (!x)
+			else
 			{
 				x = true;
 				nextBitArray[i] = '0';
 
 			}
 		}
-
+		TIFR1 |= 0b00000010;
 		TIMSK1 = 0x02;
 
 		break;
@@ -89,6 +88,7 @@ void myfunction() {
 				nextBitArray[i] = '1';
 			}
 		}
+		TIFR1 |= 0b00000010;
 		TIMSK1 = 0x02;
 
 		break;
@@ -101,7 +101,7 @@ void myfunction() {
 			nextBitArray[i] = '1';
 
 		}
-
+		TIFR1 |= 0b00000010;
 		TIMSK1 = 0x02;
 
 		break;
