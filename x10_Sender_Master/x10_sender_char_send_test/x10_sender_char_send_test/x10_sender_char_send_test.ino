@@ -10,7 +10,7 @@ ISR(TIMER3_OVF_vect);
 
 ISR(TIMER3_OVF_vect)
 {
-	PORTB = 0x00; // dummy burst signal off
+	digitalWrite(11, LOW);
 	TIMSK3 = 0x00; //disables overflow interrupt
 }
 
@@ -21,7 +21,7 @@ int main(void)
 	TCCR3B = 0x02;
 	OCR1A = 624;
 	TIMSK1 = 0x02;
-	DDRB = 0xFF; // output port
+	pinMode(11, OUTPUT);
 	sei(); // enable interrupts
 	for (;;)
 	{
@@ -32,12 +32,12 @@ ISR(TIMER1_COMPA_vect)
 {
 	if (*ptr == '0')
 	{
-		PORTB = 0x00;
+		digitalWrite(11, HIGH);
 		ptr++;
 	}
 	else if (*ptr == '1')
 	{
-		PORTB = 0xFF;
+		digitalWrite(11, HIGH);
 		ptr--;
 	}
 	TIMSK3 = 0x01;//overflow interrupt enable
