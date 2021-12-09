@@ -80,7 +80,8 @@ void switchFunction() {
 	}
 }
 
-int main(void)
+
+void setup()
 {
 	DDRA = 0x00;														// set portA to input
 	TCCR1B = 0b00001100;												// setup timer1
@@ -90,11 +91,12 @@ int main(void)
 	TIMSK1 = 0x02;														// enable interrupts
 	DDRB = 0xFF;														// set portB to output
 	sei();																// enable global interrupts
-	for (;;)
-	{
+}
+
+void loop()
+{
 		if (!stopReached)
 		{
 			switchFunction();
 		}
-	}
 }
