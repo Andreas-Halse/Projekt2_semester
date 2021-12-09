@@ -8,6 +8,7 @@ volatile char* bit;														// global pointer to array of bits
 char a = 'b';// global char for switch case
 int zeroCounter=0;
 int oneCounter=0;
+bool stopReached = false;
 bool intReached = true;
 
 ISR(TIMER1_COMPA_vect);													// ISR prototype
@@ -42,6 +43,13 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 		zeroCounter = 0;
 		oneCounter++;
 	}
+	else if (*bit == '\0' )
+	{
+		stopReached = true;
+		Serial.print("The end was reached");
+		bit -= 10;
+	}
+
 	else
 	{
 		Serial.print("hello\n");
