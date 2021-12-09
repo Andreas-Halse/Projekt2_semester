@@ -1,15 +1,15 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-char nextBitArray1[10] = { '1','1','1','1','1','1','1','1','1','1'};	// global array of bits that needs to be send to slaves 
-char nextBitArray2[10] = { '1','1','1','1','1','1','1','1','0','0' };
-char nextBitArray3[10] = { '0','1','0','1','0','1','0','1','0','1' };
+char nextBitArray1[11] = { '1','1','1','1','1','1','1','1','1','1', '\0'};	// global array of bits that needs to be send to slaves 
+char nextBitArray2[11] = { '1','1','1','1','1','1','1','1','0','0', '\0' };
+char nextBitArray3[11] = { '0','1','0','1','0','1','0','1','0','1', '\0' };
 volatile char* bit;														// global pointer to array of bits
 char a = 'b';// global char for switch case
-int zeroCounter=0;
-bool stopReached = false;
-bool intReached = true;
-bool sentTwice = false;
+int zeroCounter=3;
+volatile bool stopReached = true;
+volatile bool intReached = true;
+volatile bool sentTwice = false;
 
 ISR(TIMER1_COMPA_vect);													// ISR prototype
 ISR(TIMER3_OVF_vect);													// ISR prototype
@@ -22,14 +22,21 @@ ISR(TIMER3_OVF_vect)
 
 ISR(TIMER1_COMPA_vect)													// overflow from timer1
 {
+	Serial.print("pointeren er:  ");
+	Serial.print(*bit);
+	Serial.print("\n");
+
+
+
 	if(zeroCounter>2)
 	{
 		return;
 	}
-
 	intReached = true;
 	if (*bit == '0')
 	{
+		Serial.print("test1\n");
+
 		digitalWrite(11, LOW);													// if pointer points to 0 turn off all LEDS
 		bit++;
 		zeroCounter++;
@@ -38,6 +45,7 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 	}
 	else if (*bit == '1')
 	{
+		Serial.print("test2\n");
 		digitalWrite(11, HIGH);													// if pointer points to 1 turn on all LEDS
 		bit++;
 		zeroCounter = 0;
@@ -45,11 +53,12 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 	}
 	else if (*bit == '\0' )
 	{
+		Serial.print("\nSentinal reached\n");
 		if (sentTwice)
 		{
 			sentTwice = false;
 			stopReached = true;
-			Serial.print("The end was reached");
+			
 			bit -= 10;
 		}
 		else
@@ -115,7 +124,7 @@ void switchFunction() {
 }
 
 
-void setup()
+ void setup()
 {
 	Serial.begin(9600);
 	pinMode(11, OUTPUT);
@@ -126,13 +135,15 @@ void setup()
 	TIMSK1 = 0x02;														// enable interrupts
 	DDRB = 0xFF;														// set portB to output
 	sei();																// enable global interrupts
-	for (;;)
-	{
-
-		if (intReached&&stopReached)
-		{
-
-			switchFunction();
-		}
-	}
 }
+
+ void loop()
+ {
+	 if (intReached && stopReached)
+	 {
+
+		 switchFunction();
+	 }
+ }
+
+
