@@ -7,9 +7,9 @@ char nextBitArray3[10] = { '0','1','0','1','0','1','0','1','0','1' };
 volatile char* bit;														// global pointer to array of bits
 char a = 'b';// global char for switch case
 int zeroCounter=0;
-int oneCounter=0;
 bool stopReached = false;
 bool intReached = true;
+bool sentTwice = false;
 
 ISR(TIMER1_COMPA_vect);													// ISR prototype
 ISR(TIMER3_OVF_vect);													// ISR prototype
@@ -22,7 +22,7 @@ ISR(TIMER3_OVF_vect)
 
 ISR(TIMER1_COMPA_vect)													// overflow from timer1
 {
-	if((zeroCounter>2)||(oneCounter>2))
+	if(zeroCounter>2)
 	{
 		return;
 	}
@@ -33,7 +33,7 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 		digitalWrite(11, LOW);													// if pointer points to 0 turn off all LEDS
 		bit++;
 		zeroCounter++;
-		oneCounter = 0;
+	
 		
 	}
 	else if (*bit == '1')
@@ -41,13 +41,22 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 		digitalWrite(11, HIGH);													// if pointer points to 1 turn on all LEDS
 		bit++;
 		zeroCounter = 0;
-		oneCounter++;
+		
 	}
 	else if (*bit == '\0' )
 	{
-		stopReached = true;
-		Serial.print("The end was reached");
-		bit -= 10;
+		if (sentTwice)
+		{
+			sentTwice = false;
+			stopReached = true;
+			Serial.print("The end was reached");
+			bit -= 10;
+		}
+		else
+		{
+			sentTwice = true;
+			bit -= 10;
+		}
 	}
 
 	else
@@ -66,9 +75,10 @@ void switchFunction() {
 	{
 	case 'a':	// if case is 'k'
 		
-		intReached = false;
-
 		TIMSK1 = 0x00;													// disable interrupt timer1
+
+		intReached = false;
+		zeroCounter = 0;
 
 		bit = nextBitArray1;											// change global pointer placement
 
@@ -81,6 +91,7 @@ void switchFunction() {
 
 		TIMSK1 = 0x00;													// disable interrupt timer1
 
+		zeroCounter = 0;
 		bit = nextBitArray2;											// change global pointer placement
 
 		TIFR1 |= 0b00000010;											// make sure reset flag is reset by writing a 1 to the TIFR flag
@@ -90,7 +101,8 @@ void switchFunction() {
 	case 'c':													// if case is 'h'
 		intReached = false;
 		TIMSK1 = 0x00;													// disable interrupt timer1
-		
+		zeroCounter = 0;
+
 		bit = nextBitArray3;											// change global pointer placement
 
 		TIFR1 |= 0b00000010;											// make sure reset flag is reset by writing a 1 to the TIFR flag
@@ -117,7 +129,7 @@ int main(void)
 	for (;;)
 	{
 
-		if (intReached)
+		if (intReached&&stopReached)
 		{
 
 			switchFunction();
