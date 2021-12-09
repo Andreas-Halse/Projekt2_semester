@@ -37,10 +37,11 @@ void loop() {
 	{
 		digitalWrite(9, LOW);
 	}
-	if (on == true && retning == on)
+	if (on == true && retning == true)
 	{
 		digitalWrite(9, HIGH);
 		digitalWrite(8, HIGH);
 	}
+
 
 }

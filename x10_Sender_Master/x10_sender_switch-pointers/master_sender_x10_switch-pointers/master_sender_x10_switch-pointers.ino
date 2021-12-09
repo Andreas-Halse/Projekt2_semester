@@ -114,7 +114,8 @@ void switchFunction() {
 	}
 }
 
-int main(void)
+
+void setup()
 {
 	Serial.begin(9600);
 	pinMode(11, OUTPUT);
@@ -132,9 +133,6 @@ int main(void)
 		{
 
 			switchFunction();
-		}
-		else
-		{
 		}
 	}
 }

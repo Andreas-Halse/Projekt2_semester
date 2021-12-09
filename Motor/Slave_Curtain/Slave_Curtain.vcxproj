@@ -73,10 +73,10 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>\\Mac\Home\Desktop\Github\Projekt2_semester\Slave_Curtain;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;\\Mac\Home\Desktop\Github\PROJ~U32\SLAV~K99;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include-fixed;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\avr;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>\\Mac\Home\Desktop\Github\Projekt2_semester\Slave_Curtain\__vm\.Slave_Curtain.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <AdditionalIncludeDirectories>\\Mac\Home\Desktop\Github\Slave_Curtain;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\\lib\gcc\avr\7.3.0\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include-fixed;C:\Program Files (x86)\Arduino\hardware\tools\avr\avr\include\avr;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.2\include;C:\Program Files (x86)\Arduino\hardware\tools\avr\lib\gcc\avr\4.9.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>\\Mac\Home\Desktop\Github\Slave_Curtain\__vm\.Slave_Curtain.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_atmega2560__;__AVR_ATmega2560__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=108016;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__AVR_atmega2560__;__AVR_ATmega2560__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=108015;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -119,7 +119,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM6" config.Debug.customdebug_mega_atmega2560_debugger_type="universal" />
+      <UserProperties arduino.upload.port="COM5" config.Debug.customdebug_mega_atmega2560_debugger_type="universal" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
