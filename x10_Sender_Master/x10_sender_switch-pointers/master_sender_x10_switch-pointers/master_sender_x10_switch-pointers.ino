@@ -58,7 +58,6 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 			bit -= 10;
 		}
 	}
-
 	else
 	{
 		Serial.print("hello\n");
