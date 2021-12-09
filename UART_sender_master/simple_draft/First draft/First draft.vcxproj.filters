@@ -17,4 +17,9 @@
   <ItemGroup>
     <None Include="First draft.ino" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.First draft.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
