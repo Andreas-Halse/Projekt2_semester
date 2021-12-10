@@ -2,12 +2,13 @@
 #include <avr/interrupt.h>
 #define SIZE 12
 
-char nextBitArray1[SIZE] = { '1','1','0','1','1','0','1','1','0','0','0', '0'};	// global array of bits that needs to be send to slaves 
-char nextBitArray2[SIZE] = { '1','1','1','1','1','1','1','1','1','0','0', '0'};
-char nextBitArray3[SIZE] = { '1','0','1','0','1','0','1','1','0','0','0', '0'};
+char nextBitArray1[SIZE] = { '1','1','1','1','1','1','1','0','0','0','0','\n' }; 	// global array of bits that needs to be send to slaves 
+char nextBitArray2[SIZE] = "11111111000";
+char nextBitArray3[SIZE] = "01010101000";
 volatile char* bit;														// global pointer to array of bits
 int incomingChar;// global char for switch case
 int zeroCounter = 3;
+int sentCounter;
 
 volatile bool stopReached = true;
 volatile bool intReached = true;
@@ -24,80 +25,57 @@ ISR(TIMER3_OVF_vect)
 
 ISR(TIMER1_COMPA_vect)													// overflow from timer1
 {
-
-
-
-
-	if (zeroCounter > 2)
+	//if (zeroCounter > 2)
+	if (!( * bit == '0' || *bit == '1')||*bit=='\n')
 	{
+		/*Serial.print(*bit);*/
 		
-		if (!( * bit == '0' || *bit == '1')||*bit=='\n')
-		{
-			Serial.print(*bit);
-		
-			return;
-		}
-		
-		
-		if (!stopReached)
-		{
-			if ((*(bit - 3)) == 1)//tjekker at den sidste sendte databit er 1, for ikke at bruge 10'et fra machester enkrypteringen, som en del af stop'bitsne
-			{
-				Serial.print("pointeren er:  ");
-				Serial.print(*bit);
-				Serial.print("\n");
-				digitalWrite(11, LOW);			
-				bit++;
-			}
-
-			if (sentTwice)
-			{
-					stopReached = true;
-					sentTwice = false;
-					zeroCounter = 3;
-
-
-			}
-			else
-			{
-
-				Serial.print("\n\nsending twice\n\n");
-				bit -= (SIZE - 1);
-				sentTwice = true;
-				zeroCounter = 0;
-			}
-			
-			
-		}
-
 		return;
-		
 	}
-	Serial.print("pointeren er:  ");
-	Serial.print(*bit);
-	Serial.print("\n");
+	if (stopReached)
+	{
+		return;
+	}
+	if (sentCounter >= SIZE-1)
+	{
+		sentCounter = 0;
+		if (sentTwice)
+		{
+			stopReached = true;
+			sentTwice = false;
+					
+		}
+		else
+		{
+			/*Serial.print("\n\nsending twice\n\n");*/
+			sentTwice = true;
+		}
+		return;
+	}
+	
+	/*Serial.print("pointeren er:  ");
+	Serial.print(bit[sentCounter]);
+	Serial.print("\n");*/
 	intReached = true;
-	if (*bit == '0')
+	if (bit[sentCounter] == '0')
 	{
-		Serial.print("test1\n");
+		/*Serial.print("test1\n");*/
 
-		digitalWrite(11, LOW);													// if pointer points to 0 turn off all LEDS
-		bit++;
-		zeroCounter++;
-
+		digitalWrite(8, LOW);													// if pointer points to 0 turn off all LEDS
+		
+		sentCounter++;
 
 	}
-	else if (*bit == '1')
+	else if (bit[sentCounter] == '1')
 	{
-		Serial.print("test2\n");
-		digitalWrite(11, HIGH);													// if pointer points to 1 turn on all LEDS
-		bit++;
-		zeroCounter = 0;
+		/*Serial.print("test2\n");*/
+		digitalWrite(8, HIGH);													// if pointer points to 1 turn on all LEDS
+		sentCounter++;
 
 	}
 	else
 	{
-		Serial.print("hello\n");
+		/*Serial.print("hello\n");*/
 
 		PORTB = 0b11110000;
 	}
@@ -108,9 +86,6 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 
 void switchFunction() {
 	stopReached = false;// soerger for switchFunction ikke kaldes igen foer kommandoen er udfoert
-	zeroCounter = 0;
-	int x = bit;
-	Serial.println(x);
 	switch (incomingChar)
 	{
 	case 49:	// if case is 'k'
