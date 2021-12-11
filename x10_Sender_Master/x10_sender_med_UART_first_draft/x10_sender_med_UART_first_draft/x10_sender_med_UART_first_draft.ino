@@ -1,19 +1,22 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#define SIZE 12
 
-char nextBitArray1[11] = { '1','1','1','1','1','1','1','1','1','1', '\0'};	// global array of bits that needs to be send to slaves 
-char nextBitArray2[11] = { '1','1','1','1','1','1','1','1','0','0', '\0' };
-char nextBitArray3[11] = { '0','1','0','1','0','1','0','1','0','1', '\0' };
+char nextBitArray1[SIZE] = { '1','1','1','1','1','1','1','0','0','0','0','\n' }; 	// global array of bits that needs to be send to slaves 
+char nextBitArray2[SIZE] = "11111111000";
+char nextBitArray3[SIZE] = "01010101000";
 volatile char* bit;														// global pointer to array of bits
-char a = 'b';// global char for switch case
-int zeroCounter=3;
+int incomingChar;// global char for switch case
+int zeroCounter = 3;
+int sentCounter;
+
 volatile bool stopReached = true;
 volatile bool intReached = true;
 volatile bool sentTwice = false;
 
 ISR(TIMER1_COMPA_vect);													// ISR prototype
 ISR(TIMER3_OVF_vect);													// ISR prototype
-	
+
 ISR(TIMER3_OVF_vect)
 {
 	digitalWrite(11, LOW);														// dummy burst signal off
@@ -22,54 +25,57 @@ ISR(TIMER3_OVF_vect)
 
 ISR(TIMER1_COMPA_vect)													// overflow from timer1
 {
-	Serial.print("pointeren er:  ");
-	Serial.print(*bit);
-	Serial.print("\n");
-
-
-
-	if(zeroCounter>2)
+	//if (zeroCounter > 2)
+	if (!( * bit == '0' || *bit == '1')||*bit=='\n')
+	{
+		/*Serial.print(*bit);*/
+		
+		return;
+	}
+	if (stopReached)
 	{
 		return;
 	}
-	intReached = true;
-	if (*bit == '0')
+	if (sentCounter >= SIZE-1)
 	{
-		Serial.print("test1\n");
-
-		digitalWrite(11, LOW);													// if pointer points to 0 turn off all LEDS
-		bit++;
-		zeroCounter++;
-	
-		
-	}
-	else if (*bit == '1')
-	{
-		Serial.print("test2\n");
-		digitalWrite(11, HIGH);													// if pointer points to 1 turn on all LEDS
-		bit++;
-		zeroCounter = 0;
-		
-	}
-	else if (*bit == '\0' )
-	{
-		Serial.print("\nSentinal reached\n");
+		sentCounter = 0;
 		if (sentTwice)
 		{
-			sentTwice = false;
 			stopReached = true;
-			
-			bit -= 10;
+			sentTwice = false;
+					
 		}
 		else
 		{
+			/*Serial.print("\n\nsending twice\n\n");*/
 			sentTwice = true;
-			bit -= 10;
 		}
+		return;
+	}
+	
+	/*Serial.print("pointeren er:  ");
+	Serial.print(bit[sentCounter]);
+	Serial.print("\n");*/
+	intReached = true;
+	if (bit[sentCounter] == '0')
+	{
+		/*Serial.print("test1\n");*/
+
+		digitalWrite(8, LOW);													// if pointer points to 0 turn off all LEDS
+		
+		sentCounter++;
+
+	}
+	else if (bit[sentCounter] == '1')
+	{
+		/*Serial.print("test2\n");*/
+		digitalWrite(8, HIGH);													// if pointer points to 1 turn on all LEDS
+		sentCounter++;
+
 	}
 	else
 	{
-		Serial.print("hello\n");
+		/*Serial.print("hello\n");*/
 
 		PORTB = 0b11110000;
 	}
@@ -79,10 +85,11 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 }
 
 void switchFunction() {
-	switch (a)
+	stopReached = false;// soerger for switchFunction ikke kaldes igen foer kommandoen er udfoert
+	switch (incomingChar)
 	{
-	case 'a':	// if case is 'k'
-		
+	case 49:	// if case is 'k'
+
 		TIMSK1 = 0x00;													// disable interrupt timer1
 
 		intReached = false;
@@ -94,7 +101,7 @@ void switchFunction() {
 		TIMSK1 = 0x02;					// enable interrupt
 		break;
 
-	case 'b':													// if case is 'f'
+	case 50:													// if case is 'f'
 		intReached = false;
 
 		TIMSK1 = 0x00;													// disable interrupt timer1
@@ -105,8 +112,8 @@ void switchFunction() {
 		TIFR1 |= 0b00000010;											// make sure reset flag is reset by writing a 1 to the TIFR flag
 		TIMSK1 = 0x02;													// enable interrupt
 		break;
-			
-	case 'c':													// if case is 'h'
+
+	case 51:													// if case is 'h'
 		intReached = false;
 		TIMSK1 = 0x00;													// disable interrupt timer1
 		zeroCounter = 0;
@@ -124,7 +131,7 @@ void switchFunction() {
 }
 
 
- void setup()
+void setup()
 {
 	Serial.begin(9600);
 	pinMode(11, OUTPUT);
@@ -137,13 +144,19 @@ void switchFunction() {
 	sei();																// enable global interrupts
 }
 
- void loop()
- {
-	 if (intReached && stopReached)
-	 {
+void loop()
+{
+	if ((intReached && stopReached)&&(Serial.available()>0))
+	{
 
-		 switchFunction();
-	 }
- }
+		Serial.print("command recieved");
+		cli();
+		incomingChar = Serial.read();//loader char'en ind i incomingChar til switch casen.
+		Serial.print("I received: ");
+		Serial.println(incomingChar);
 
+		switchFunction();
+		sei();
+	}
 
+}

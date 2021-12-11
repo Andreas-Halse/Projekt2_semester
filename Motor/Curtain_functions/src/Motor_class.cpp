@@ -1,7 +1,6 @@
 #include "Motor.hpp"
 #include <Arduino.h>
 #include <avr/io.h>
-#include "Motor.hpp"
 
 Motor::Motor()
 {
