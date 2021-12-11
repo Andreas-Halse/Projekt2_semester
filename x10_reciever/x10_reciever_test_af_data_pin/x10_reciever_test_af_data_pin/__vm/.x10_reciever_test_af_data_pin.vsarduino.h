@@ -88,6 +88,6 @@ typedef void *__builtin_va_list;
 #define pgm_read_float(address_short) float()
 #define pgm_read_ptr(address_short)   short()
 
-#include "light_control.ino"
+#include "x10_reciever_test_af_data_pin.ino"
 #endif
 #endif

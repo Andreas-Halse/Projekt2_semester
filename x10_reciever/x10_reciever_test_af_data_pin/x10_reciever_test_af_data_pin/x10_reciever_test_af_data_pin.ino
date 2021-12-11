@@ -16,9 +16,8 @@ bool volatile arrayBool = true;
 
 void setup()
 {
-	pinMode(53, INPUT);
 	DDRA = 0x00;
-	pinMode(53, INPUT);
+	pinMode(51, INPUT);
 	EICRA = 0b11000000; // trigger rising edge
 	EIMSK |= 0b00001000; //  activate INT3
 	sei(); // enable interrupts
@@ -29,7 +28,7 @@ void loop()
 {
 	if (messageDone)
 	{
-		
+
 		Serial.print("Both messages recieved comparing messages\n");
 		//kald Andreas compare shit
 		Serial.print("the first array\n");
@@ -48,47 +47,21 @@ void loop()
 }
 ISR(INT3_vect)
 {
-	Serial.print("interrupt triggered  \n ");
-	if (i < (SIZE+1))
+	if (digitalRead(51) == HIGH)
 	{
-		Serial.println(digitalRead(53));
-		if (arrayBool)
-		{
-			loadIntoArray(messageArray);
-				if (zeroCounter >= 3)
-				{
-					Serial.print("zeroCounter overflow\n  ");
-					arrayBool=false;
-					zeroCounter = 0;
-					i = 0;
-				}
-		}
-		else
-		{
-			loadIntoArray(compareArray);
-				if (zeroCounter >= 3)
-				{
-					Serial.print("zeroCounter overflow  AGAIN \n");
-					zeroCounter = 0;
-					arrayBool=true;
-					messageDone = true;
-					cli();
-					i = 0;
-				}
-		}
-	}
-	else
-	{
-		if (!arrayBool&&!(messageArray==compareArray))
-		{
-			Serial.print("beskederne er ikke ens. Fejl.\n");
-			messageDone = true;
-			zeroCounter = 0;
-			arrayBool = true;
-		}
-		arrayBool = !arrayBool;
-	}
+		Serial.print("Test1\n");
 
+		
+		i++;
+		zeroCounter = 0;
+	}
+	else if (digitalRead(51)==LOW)
+	{
+		Serial.print("Test2\n");
+		
+		i++;
+		zeroCounter++;
+	}
 
 }
 
@@ -98,19 +71,5 @@ ISR(INT3_vect)
 
 void loadIntoArray(int arr[20])
 {
-	if (digitalRead(53) == HIGH)
-	{
-		Serial.print("Test1\n");
 
-		arr[i] = 1;
-		i++;
-		zeroCounter = 0;
-	}
-	else if(digitalRead(53)==LOW)
-	{
-		Serial.print("Test2\n");
-		arr[i] = 0;
-		i++;
-		zeroCounter++;
-	}
 }
