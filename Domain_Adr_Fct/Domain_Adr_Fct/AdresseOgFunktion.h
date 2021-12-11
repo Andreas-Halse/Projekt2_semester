@@ -1,6 +1,7 @@
 #pragma once
 /// @brief domain class for data on addresses and funktion on x.10
-/// 
+/// author: Julie Zepernick Jepsen
+/// Dato: 11.12.2021
 /// 
 class AdresseOgFunktion
 {
