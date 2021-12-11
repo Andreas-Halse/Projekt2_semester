@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="MasterIF.h" />
+    <ClInclude Include="MasterCON.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MasterIF.cpp" />

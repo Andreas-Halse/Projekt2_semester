@@ -1,5 +1,6 @@
-#include "MasterIF.h"
+#include "MasterCON.h"
 
 void MasterIF::stop()
 {
+
 }
