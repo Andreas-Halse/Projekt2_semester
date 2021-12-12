@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <avr/io.h>
-#include <Arduino.h>
 #include <Stream.h>
 #include "Motor_module.hpp"
+
 
 
 
@@ -14,26 +14,25 @@ pinMode(53, OUTPUT); // sætter pin 53 til output til on
 pinMode(51, OUTPUT); // sætter pin 51 til output til retning
 Motor_module M;
 
-Serial.print("TEST1");
-cout << "Test1"
 for(;;)
 {
-M.CurtainUp();
-Serial.print("TEST2");
+
+
+
 M.MotorOn();
+M.CurtainUp();
 
-Serial.print("TEST");
-delay(2000);
+_delay_ms(4000);
 
-// M.CurtainDown();
 M.MotorOff();
 
-// delay(10000);
+_delay_ms(5000);
 
-// M.CurtainUp();
 
-// delay(5000);
+M.MotorOn();
+M.CurtainDown();
 
+_delay_ms(10000);
 }
 
 }
