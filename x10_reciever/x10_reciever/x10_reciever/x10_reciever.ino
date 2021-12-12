@@ -7,8 +7,8 @@
 #define SIZE 20
 // the setup function runs once when you press reset or power the board
 ISR(INT3_vect); // prototype
-int messageArray[20];
-int compareArray[20];
+int messageArray[50];
+int compareArray[50];
 int volatile i = 0;
 int volatile zeroCounter;
 bool volatile messageDone = false;
