@@ -1,12 +1,12 @@
-#include "Slave_Child.h"
+#include "Slave_Child_Class.h"
 
 /*
-* @brief constructor til klassen 
-* 
+* @brief constructor til klassen
+*
 */
 
 Slave_Child::Slave_Child()
-{	
+{
 }
 
 
