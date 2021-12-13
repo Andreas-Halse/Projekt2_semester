@@ -15,39 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="MasterApplication.ino" />
+    <None Include="Lys2.0_cpp.ino" />
     <None Include="src\arduino folders read me.txt">
       <Filter>Misc Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.MasterApplication.vsarduino.h">
+    <ClInclude Include="__vm\.Lys2.0_cpp.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Control.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PC_IF.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="x10_Sender.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DE2_IF.h">
+    <ClInclude Include="Lys_Class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Control.cpp">
+    <ClCompile Include="Lys_Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PC_IF.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="x10_Sender.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DE2_IF.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

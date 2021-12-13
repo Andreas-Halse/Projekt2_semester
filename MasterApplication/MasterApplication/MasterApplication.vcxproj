@@ -114,7 +114,6 @@
   <ItemGroup>
     <ClInclude Include="Control.h" />
     <ClInclude Include="DE2_IF.h" />
-    <ClInclude Include="Domain_Adr_Fct.h" />
     <ClInclude Include="PC_IF.h" />
     <ClInclude Include="x10_Sender.h" />
     <ClInclude Include="__vm\.MasterApplication.vsarduino.h" />
@@ -122,7 +121,6 @@
   <ItemGroup>
     <ClCompile Include="Control.cpp" />
     <ClCompile Include="DE2_IF.cpp" />
-    <ClCompile Include="Domain_Adr_Fct.cpp" />
     <ClCompile Include="PC_IF.cpp" />
     <ClCompile Include="x10_Sender.cpp" />
   </ItemGroup>
@@ -131,7 +129,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties arduino.upload.port="COM8" config.Debug.customdebug_mega_atmega2560_debugger_type="universal" />
+      <UserProperties arduino.upload.port="COM6" config.Debug.customdebug_mega_atmega2560_debugger_type="universal" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

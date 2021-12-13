@@ -6,8 +6,6 @@
 
 #include <avr/io.h>
 
-using namespace std;
-
 int volatile intensitet = 220;
 
 
@@ -26,10 +24,21 @@ void loop() {
 		_delay_ms(1000);
 		decreaseBrightness();
 		_delay_ms(1000);
-		decreaseBrightness();
+		decreaseBrightness(); // =0
 		_delay_ms(1000);
-		decreaseBrightness();
+		decreaseBrightness(); // test af validering
 		_delay_ms(1000);
+		increaseBrightness(); 
+		_delay_ms(1000);
+		increaseBrightness();
+		_delay_ms(1000);
+		increaseBrightness();
+		_delay_ms(1000);
+		increaseBrightness(); // = 100
+		_delay_ms(1000);
+		increaseBrightness(); // test af validering
+		turnOff();
+		_delay_ms(5000);
 }
 
 void turnOn() {
@@ -51,16 +60,16 @@ void turnOff()
 
 void increaseBrightness() {
 
-	if (intensitet <= 220)
+	if (intensitet <= 165)
 	{
 		intensitet = intensitet + 55;
+		analogWrite(13, intensitet);
 	}
 	else
 	{
 		intensitet = 220;
+		analogWrite(13, intensitet);
 	}
-	
-	analogWrite(13, intensitet);
 }
 
 void decreaseBrightness() {
@@ -73,6 +82,7 @@ void decreaseBrightness() {
 	else 
 	{
 		intensitet = 0;
+		analogWrite(13, intensitet);
 	}
 }
 
