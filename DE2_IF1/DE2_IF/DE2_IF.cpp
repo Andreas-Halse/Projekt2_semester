@@ -1,4 +1,5 @@
 #include "DE2_IF.h"
+
 DE2_IF::DE2_IF()
 {
 }
@@ -6,15 +7,15 @@ DE2_IF::DE2_IF()
 //sets attributes for login
 bool DE2_IF::signalUnlock()
 {
-		if (PINC & 0b00001000)
-		{
-			signalUnlock_ = true;
-		}
-		else
-		{
-			signalUnlock_ = false;
+	if (PINC & 0b00001000)
+	{
+		signalUnlock_ = true;
+	}
+	else
+	{
+		signalUnlock_ = false;
 
-		}
+	}
 	return signalUnlock_;
 }
 
@@ -26,7 +27,7 @@ void DE2_IF::signalPermLock()
 	{
 		signalPermLock_ = true;
 	}
-	else 
+	else
 	{
 		signalPermLock_ = false;
 	}
@@ -51,6 +52,3 @@ void DE2_IF::print() const
 		Serial.print("System is in permanent lock. \n Please go to user manual for reset. ");
 	}
 }
-
-
-
