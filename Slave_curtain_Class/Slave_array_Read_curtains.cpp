@@ -1,25 +1,26 @@
-#include "Slave_Array_Read_cpp.h"
-#include "Slave_Child_Class.h"
+#include "Slave_array_Read_curtains.h"
+#include "Slave_curtains.h"
 
-/*
+
+/*****
 d. 13-12-2021
-author: 1. version:  Elisabeth, sekundær: Andreas.
+author: 1. version:  Elisabeth
 author: 2. version:
 */
 
 
-Slave_Array_Read_cpp::Slave_Array_Read_cpp()
+Slave_Array_Read::Slave_Array_Read()
 {
 }
 
-bool Slave_Array_Read_cpp::StartSekvensValidate(int arrayIn[])
+bool Slave_Array_Read::StartSekvensValidate(int arrayIn[])
 {
 	bool startSekvens = false;
 
 	for (int i = 0; i <= 3; i++)	// tjekker startbit sekvens er ens
 	{
 
-		if (arrayIn[i] == child[i])
+		if (arrayIn[i] == Slave_curtains[i])
 		{
 			startSekvens = true;
 		}
@@ -35,14 +36,14 @@ bool Slave_Array_Read_cpp::StartSekvensValidate(int arrayIn[])
 	}
 }
 
-bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
+bool Slave_Array_Read::AdresseSekvensValidate(int arrayIn[])
 {
 	bool adresseSekvens = false;
 	if (StartSekvensValidate(arrayIn) == true)	//hvis start sekvens er ens, går den ned i det her loop og tjekker 
 	{
 		for (int j = 4; j <= 11; j++)
 		{
-			if (arrayIn[j] == child[j])
+			if (arrayIn[j] == Slave_curtains[j])
 			{
 				adresseSekvens = true;
 			}
@@ -60,22 +61,22 @@ bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
 	}
 }
 
-void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
+void Slave_Array_Read::FunctionsValidateCall(int arrayIn[])
 {
-	Slave_Child A;
+	Slave_curtains A;
 	if (StartSekvensValidate(arrayIn) == true)
 	{
 		if (AdresseSekvensValidate(arrayIn) == true)
 		{
 			for (int x = 10; x <= 17; x++)
 			{
-				if (activate[x] == arrayIn[x])
+				if (rollDown[x] == arrayIn[x])
 				{
-					A.activate();
+					A.rollDown();
 				}
-				else if (deactivate[x] == arrayIn[x])
+				else if (rollUp[x] == arrayIn[x])
 				{
-					A.deactivate();
+					A.rollUp();
 				}
 
 				else if (stop[x] == arrayIn[x])
@@ -95,13 +96,5 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 	{
 		// udskriv fejlmeddelse2 ( start sek.er ikke ens)
 	}
-
-
-
-
-
-
-
-
 
 }

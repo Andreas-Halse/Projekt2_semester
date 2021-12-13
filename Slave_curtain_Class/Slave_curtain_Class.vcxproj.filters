@@ -15,30 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Lys2.0_cpp.ino" />
+    <None Include="Slave_curtain_Class.ino" />
     <None Include="src\arduino folders read me.txt">
       <Filter>Misc Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.Lys2.0_cpp.vsarduino.h">
+    <ClInclude Include="__vm\.Slave_curtain_Class.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Lys_Class.h">
+    <ClInclude Include="Slave_curtains.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Slave_Array_read.h">
+    <ClInclude Include="Slave_array_Read_curtains.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Lys_Class.cpp">
+    <ClCompile Include="Slave_curtains.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Slave_Array_lys.cpp">
+    <ClCompile Include="Slave_array_Read_curtains.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
