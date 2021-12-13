@@ -49,6 +49,20 @@ void setup()
 	control.printStartMenu();
 }
 
+// const char arrays for address and function on X.10 unit
+#define SIZE 33
+//child:
+const char ActivateLock[SIZE] = { "11101001100101010101010101010110" };		//L
+const char DeactivateLock[SIZE] = { "11101001100101010101010101010110" };	//D
+//curtain
+const char RollUpCurtain[SIZE] = { "11101001011001100110010101010110" };	//U
+const char RollDownCurtain[SIZE] = { "11101001011010011001101010101010" };	//C
+//lights
+const char LightsOn[SIZE] = { "11100110011001101001011010010110" };			//O
+const char LightsOff[SIZE] = { "11100110011001010110100101101010" };		//F
+const char IncreaseBrightness[SIZE] = { "11100110011001101010101010010110" };//I
+const char DecreaseBrightness[SIZE] = { "11100110011001010101010101101010" };//B
+
 // Infinite loop() function
 void loop()
 {
@@ -58,42 +72,42 @@ void loop()
 		if (control.getNumberFromPC() == 76)	//76 = L. Activate EM lock. 
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('AL'));
+			control.prepareMessageTox10(ActivateLock);
 		}
 		if (control.getNumberFromPC() == 68)	//69 = D. Deactivate EM lock
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('DL'));
+			control.prepareMessageTox10(DeactivateLock);
 		}
 		if (control.getNumberFromPC() == 85)	//85 = U. Roll up curtain
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('RU'));
+			control.prepareMessageTox10(RollUpCurtain);
 		}
 		if (control.getNumberFromPC() == 67)	//67 = C. Roll down curtain
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('RD'));
+			control.prepareMessageTox10(RollDownCurtain);
 		}
 		if (control.getNumberFromPC() == 79)	// 79 = O. Lights ON
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('ON'));
+			control.prepareMessageTox10(LightsOn);
 		}
 		if (control.getNumberFromPC() == 70)	// 70 = F. Lights OFF
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('OF'));
+			control.prepareMessageTox10(LightsOff);
 		}
 		if (control.getNumberFromPC() == 73)	// 73 = I.Increase brightness
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('I'));
+			control.prepareMessageTox10(IncreaseBrightness);
 		}
-		if (control.getNumberFromPC() == 68)	// 68 = F.Increase brightness
+		if (control.getNumberFromPC() == 66)	// 66 = B.Decrease brightness
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(control.setArray('D'));
+			control.prepareMessageTox10(DecreaseBrightness);
 		}
 	}
 }

@@ -36,9 +36,6 @@
     <ClInclude Include="DE2_IF.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Domain_Adr_Fct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Control.cpp">
@@ -51,9 +48,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DE2_IF.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Domain_Adr_Fct.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

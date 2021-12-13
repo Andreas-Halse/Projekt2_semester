@@ -15,7 +15,6 @@ Control::Control(PC_IF* PointerToPC, x10_Sender* PointerToSender, DE2_IF* DE2Ptr
 	pcPtr = PointerToPC;
 	senderPtr = PointerToSender;
 	DE2Ptr_ = DE2Ptr;
-	AdrFctPtr = nullptr;
 	byteReceived = 0;
 }
 
@@ -54,57 +53,28 @@ void Control::prepareMessageTox10(const char* a)
 	senderPtr->setBitPointer(a);
 }
 
+/*@Autor: Julie Zepernick Jepsen
+* @brief conditional if statement with pointer to DE2 class, checking for valid password
+* Printing options to user interface
+*/
+
 void Control::printStartMenu()
 {
 	if (DE2Ptr_->signalUnlock())
 	{
 		Serial.print("-------------------------- \n Welcome to your Smart Home! \n -------------------------- ");
+		Serial.print("For at tænde lys, indtast O");
+		Serial.print("For at slukke lys, indtast F");
+		Serial.print("For at skrue op for lysstyrken, indtast på I");
+		Serial.print("For at skrue ned for lysstyrken, indtast på B");
+		Serial.print("For at slå låsen på kemikalieskabet til, indtast L");
+		Serial.print("For at slå låsen på kemikalieskabet fra, indtast D");
+		Serial.print("For at rulle gardinet op, indtast U");
+		Serial.print("For at rulle gardinet ned, indtast C");
+		Serial.print("For at stoppe alle systemer, indtast Q");
 	}
 }
 
-/*
-* @Author Julie Zepernick Jepsen
-* @brief switch case to set const char arrays from domain class AdresseOgFunktion
-* @returns const char array pointer 
-*/
-const char* Control::setArray(char AdrFct) 
-{
-	switch (AdrFct) {
-	case 'AL':
-		AdrFctPtr = (AdrFct_.ActivateLock);
-		break;
-	case 'DL':
-		AdrFctPtr = (AdrFct_.DeactivateLock);
-		break;
-	case 'RU':
-		AdrFctPtr = (AdrFct_.RollUpCurtain);
-		break;
-	case 'RD':
-		AdrFctPtr = (AdrFct_.RollDownCurtain);
-		break;
-	case 'ON':
-		AdrFctPtr = (AdrFct_.LightsOn);
-		break;
-	case 'OFF':
-		AdrFctPtr = (AdrFct_.LightsOff);
-		break;
-	case 'I':
-		AdrFctPtr = (AdrFct_.IncreaseBrightness);
-		break;
-	case 'D':
-		AdrFctPtr = (AdrFct_.DecreaseBrightness);
-		break;
-	}
-	return AdrFctPtr;
-}
 
 
-
-void Control::stopAll()
-{
-	AdrFct_.LightsOff;
-	AdrFct_.DeactivateLock;
-	AdrFct_.RollDownCurtain;
-
-}
 
