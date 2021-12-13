@@ -15,14 +15,14 @@ volatile bool intReached = true;
 volatile bool sentTwice = false;
 
 ISR(TIMER1_COMPA_vect);													// ISR prototype
-ISR(TIMER3_OVF_vect);													// ISR prototype
-
+//ISR(TIMER3_OVF_vect);													// ISR prototype
+/*
 ISR(TIMER3_OVF_vect)
 {
-	digitalWrite(11, LOW);														// dummy burst signal off
+														// dummy burst signal off
 	TIMSK3 = 0x00;														// disables overflow interrupt for timer3
 }
-
+*/
 ISR(TIMER1_COMPA_vect)													// overflow from timer1
 {
 	//if (zeroCounter > 2)
@@ -36,6 +36,7 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 	{
 		return;
 	}
+
 	if (sentCounter >= SIZE-1)
 	{
 		sentCounter = 0;
@@ -71,7 +72,7 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 		/*Serial.print("test2\n");*/
 		digitalWrite(8, HIGH);													// if pointer points to 1 turn on all LEDS
 		sentCounter++;
-
+		_delay_ms(2);
 	}
 	else
 	{
@@ -79,8 +80,8 @@ ISR(TIMER1_COMPA_vect)													// overflow from timer1
 
 		PORTB = 0b11110000;
 	}
-	TIMSK3 = 0x01;														// overflow interrupt enable
-	TCNT3 = 63536;														// x-value sent to timer 3 for overflow after 1 ms
+	//TIMSK3 = 0x01;														// overflow interrupt enable
+	//TCNT3 = 63536;														// x-value sent to timer 3 for overflow after 1 ms
 
 }
 
