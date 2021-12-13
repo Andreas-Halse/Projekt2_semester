@@ -9,14 +9,13 @@
 class Slave_Child
 {
 public: 
-	Slave_Child();			//parametre: ptr til boundary
+	Slave_Child();		
 	bool activate();
 	bool deactivate();
 	void stop();
 
 private:
 	bool state_;
-	//ptr til Lås IF
-	//ptr til X10 IF
+
 };
 

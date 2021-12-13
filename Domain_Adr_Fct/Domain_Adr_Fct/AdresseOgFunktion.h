@@ -1,8 +1,10 @@
 #pragma once
-/// @brief domain class for data on addresses and funktion on x.10
-/// author: Julie Zepernick Jepsen
-/// Dato: 11.12.2021
-/// 
+/*
+* @brief domain class for data on addresses and funktion on x.10
+* @author: Julie Zepernick Jepsen
+* @
+*/
+
 class AdresseOgFunktion
 {
 private:
@@ -22,4 +24,8 @@ private:
 	const int DecreaseBrightness_[16]	= {0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0};
 	const int Stop[16]					= {1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1};
 };
+
+
+
+
 

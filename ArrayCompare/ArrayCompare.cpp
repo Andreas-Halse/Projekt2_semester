@@ -44,7 +44,7 @@ bool ArrayCompare::ArrayDataCompare(int A1[], int A2[])
 	{
 		if (A1[index] != A2[index])
 		{
-			cout << "Data matcher¨IKKE " << endl;
+			cout << "Data matcher IKKE " << endl;
 			return false; 
 		}
 	}
