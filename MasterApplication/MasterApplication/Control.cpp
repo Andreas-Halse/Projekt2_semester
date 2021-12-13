@@ -7,10 +7,11 @@
 /*
 *@ brief Constructor for class Control - sets up association and initializes private attributes
 */
-Control::Control(PC_IF* PointerToPC, x10_Sender* PointerToSender)
+Control::Control(PC_IF* PointerToPC, x10_Sender* PointerToSender, DE2_IF* DE2Ptr)
 {
 	pcPtr = PointerToPC;
 	senderPtr = PointerToSender;
+	DE2Ptr_ = DE2Ptr;
 	byteReceived = 0;
 }
 
@@ -48,3 +49,16 @@ void Control::prepareMessageTox10(const char* a)
 {
 	senderPtr->setBitPointer(a);
 }
+
+void Control::printStartMenu()
+{
+	if (DE2Ptr_->signalUnlock())
+	{
+		Serial.print("-------------------------- \n Welcome to your Smart Home! \n -------------------------- ");
+		Serial.print("To adjust your light, type 'LIGHT'\n");
+		Serial.print("To adjust your curtains, type 'CURTAIN'\n");
+		Serial.print("To control your child safety, type 'CHILD'\n");
+	}
+
+}
+

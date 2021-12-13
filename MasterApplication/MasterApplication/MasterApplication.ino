@@ -45,6 +45,8 @@ void setup()
 	//Test for clock signal on PORTB 
 	PORTL |= 0b00000100;
 	sei();
+
+	control.printStartMenu();
 }
 
 // Infinite loop() function

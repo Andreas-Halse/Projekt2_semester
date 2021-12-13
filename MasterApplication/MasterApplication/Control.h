@@ -6,19 +6,22 @@
 
 #include "PC_IF.h"
 #include "x10_Sender.h"
+#include "DE2_IF.h"
 
 
 class Control
 {
 public:
-	Control(PC_IF*, x10_Sender*);
+	Control(PC_IF*, x10_Sender*, DE2_IF*);
 	int getNumberFromPC() const;
 	void prepareNewMessageFromPc();
 	void sendMessage();
 	void prepareMessageTox10(const char* a);
+	void printStartMenu(); 
 private:
 	int byteReceived;
 	PC_IF* pcPtr;
 	x10_Sender* senderPtr;
+	DE2_IF* DE2Ptr_;
 
 };
