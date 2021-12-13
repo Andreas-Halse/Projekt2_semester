@@ -6,12 +6,16 @@
 #include "PC_IF.h"
 #include "x10_Sender.h"
 #include "Control.h"
+#include "DE2_IF.h"
+
 
 
 //Global objects with appropriate initializations
 PC_IF pc;
 x10_Sender x10;
-Control control(&pc, &x10);
+DE2_IF password(false,false);
+Control control(&pc, &x10, &password);
+
 
 //Interrupt service routine for clock overflow -- attempts to send bit when clock 1 overflows
 ISR(TIMER1_COMPA_vect)
@@ -27,9 +31,6 @@ ISR(TIMER1_COMPA_vect)
 	control.sendMessage();
 }
 
-//Global character arrays that contain start sequence, address, and function (arrays below are just an example)
-const char array1[11] = "1110101011";
-const char array2[11] = "1111010111";
 
 // The setup() function runs once each time the micro-controller starts
 void setup()
@@ -45,25 +46,55 @@ void setup()
 	//Test for clock signal on PORTB 
 	PORTL |= 0b00000100;
 	sei();
-
 	control.printStartMenu();
 }
 
 // Infinite loop() function
 void loop()
 {
-	if (Serial.available() > 0) {
-		// read the incoming byte:
+	if (Serial.available() > 0)
+	{
 		pc.setMessageFromPC(Serial.read());
-		if (control.getNumberFromPC() == 111)			// If serial information read is an 'O'
+		if (control.getNumberFromPC() == 76)	//76 = L. Activate EM lock. 
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(array1);
+			control.prepareMessageTox10(control.setArray('AL'));
 		}
-		if (control.getNumberFromPC() == 112)			// If serial information read is a 'P'
+		if (control.getNumberFromPC() == 68)	//69 = D. Deactivate EM lock
 		{
 			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(array2);
+			control.prepareMessageTox10(control.setArray('DL'));
+		}
+		if (control.getNumberFromPC() == 85)	//85 = U. Roll up curtain
+		{
+			control.prepareNewMessageFromPc();
+			control.prepareMessageTox10(control.setArray('RU'));
+		}
+		if (control.getNumberFromPC() == 67)	//67 = C. Roll down curtain
+		{
+			control.prepareNewMessageFromPc();
+			control.prepareMessageTox10(control.setArray('RD'));
+		}
+		if (control.getNumberFromPC() == 79)	// 79 = O. Lights ON
+		{
+			control.prepareNewMessageFromPc();
+			control.prepareMessageTox10(control.setArray('ON'));
+		}
+		if (control.getNumberFromPC() == 70)	// 70 = F. Lights OFF
+		{
+			control.prepareNewMessageFromPc();
+			control.prepareMessageTox10(control.setArray('OF'));
+		}
+		if (control.getNumberFromPC() == 73)	// 73 = I.Increase brightness
+		{
+			control.prepareNewMessageFromPc();
+			control.prepareMessageTox10(control.setArray('I'));
+		}
+		if (control.getNumberFromPC() == 68)	// 68 = F.Increase brightness
+		{
+			control.prepareNewMessageFromPc();
+			control.prepareMessageTox10(control.setArray('D'));
 		}
 	}
 }
+

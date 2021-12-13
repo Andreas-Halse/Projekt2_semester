@@ -4,6 +4,9 @@
 */
 
 #include "Control.h"
+#include <Arduino.h>
+#include <avr/io.h>
+
 /*
 *@ brief Constructor for class Control - sets up association and initializes private attributes
 */
@@ -12,6 +15,7 @@ Control::Control(PC_IF* PointerToPC, x10_Sender* PointerToSender, DE2_IF* DE2Ptr
 	pcPtr = PointerToPC;
 	senderPtr = PointerToSender;
 	DE2Ptr_ = DE2Ptr;
+	AdrFctPtr = nullptr;
 	byteReceived = 0;
 }
 
@@ -55,10 +59,52 @@ void Control::printStartMenu()
 	if (DE2Ptr_->signalUnlock())
 	{
 		Serial.print("-------------------------- \n Welcome to your Smart Home! \n -------------------------- ");
-		Serial.print("To adjust your light, type 'LIGHT'\n");
-		Serial.print("To adjust your curtains, type 'CURTAIN'\n");
-		Serial.print("To control your child safety, type 'CHILD'\n");
 	}
+}
+
+/*
+* @Author Julie Zepernick Jepsen
+* @brief switch case to set const char arrays from domain class AdresseOgFunktion
+* @returns const char array pointer 
+*/
+const char* Control::setArray(char AdrFct) 
+{
+	switch (AdrFct) {
+	case 'AL':
+		AdrFctPtr = (AdrFct_.ActivateLock);
+		break;
+	case 'DL':
+		AdrFctPtr = (AdrFct_.DeactivateLock);
+		break;
+	case 'RU':
+		AdrFctPtr = (AdrFct_.RollUpCurtain);
+		break;
+	case 'RD':
+		AdrFctPtr = (AdrFct_.RollDownCurtain);
+		break;
+	case 'ON':
+		AdrFctPtr = (AdrFct_.LightsOn);
+		break;
+	case 'OFF':
+		AdrFctPtr = (AdrFct_.LightsOff);
+		break;
+	case 'I':
+		AdrFctPtr = (AdrFct_.IncreaseBrightness);
+		break;
+	case 'D':
+		AdrFctPtr = (AdrFct_.DecreaseBrightness);
+		break;
+	}
+	return AdrFctPtr;
+}
+
+
+
+void Control::stopAll()
+{
+	AdrFct_.LightsOff;
+	AdrFct_.DeactivateLock;
+	AdrFct_.RollDownCurtain;
 
 }
 

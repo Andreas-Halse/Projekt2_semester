@@ -2,27 +2,22 @@
 /*
 * @brief domain class for data on addresses and funktion on x.10
 * @author: Julie Zepernick Jepsen
-* @
 */
 
 class AdresseOgFunktion
 {
-private:
-	//Slaves adresse databits
-	const char SlaveChildAdr_[8] = { 1,0,0,1,1,0,0,1 };
-	const char SlaveCurtainAdr_[8] = { 1,0,0,1,0,1,1,0 };
-	const char SlaveLightAdr_[8] = { 0,1,1,0,0,1,1,0 };
-
-	//Funktionskald databits
-	const char ActivateFct_[16] = { 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0 };
-	const char DectivateFct_[16] = { 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1 };
-	const char RollUpFct_[16] = { 1,0,0,1,1,0,0,1,0,1,0,1,0,1,0,1 };
-	const char RollDownFct_[16] = { 0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0 };
-	const char LightsOnFct[16] = { 1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1 };
-	const char LightsOffFct[16] = { 0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0 };
-	const char IncreaseBrightness_[16] = { 1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1 };
-	const char DecreaseBrightness_[16] = { 0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0 };
-	const char Stop[16] = { 1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1 };
+public:
+	//child:
+	const char ActivateLock[27]			= { "100110011010101010101010" };
+	const char DeactivateLock[27]		= { "100110010101010101010101" };
+	//curtain
+	const char RollUpCurtain[27]		= { "100101101001100101010101" };
+	const char RollDownCurtain[27]		= { "100101100110011010101010" };
+	//lights
+	const char LightsOn[27]				= { "011001101010010110100101" };
+	const char LightsOff[27]			= { "011001100101101001011010" };
+	const char IncreaseBrightness[27]	= { "011001101010101010100101" };
+	const char DecreaseBrightness[27]	= { "011001100101010101011010" };
 };
 
 

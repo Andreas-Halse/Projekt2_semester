@@ -1,5 +1,6 @@
 #include "DE2_IF.h"
 #include <avr/io.h>
+#include <Arduino.h>
 
 /*@brief default constructor
 * @params bool to set signalUnlock, bool to set signalPermanentLock
