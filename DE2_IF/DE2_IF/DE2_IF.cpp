@@ -1,9 +1,19 @@
 #include "DE2_IF.h"
-DE2_IF::DE2_IF()
+#include <avr/io.h>
+
+/*@brief default constructor
+* @params bool to set signalUnlock, bool to set signalPermanentLock
+*/
+DE2_IF::DE2_IF(bool sigUnlock, bool sigPermLock)
 {
+	signalUnlock_ = sigUnlock;
+	signalPermLock_ = sigPermLock;
 }
 
-//sets attributes for login
+/*
+* @brief method to recieve high signal from arduino pin 56.
+* Set attribute to true if pin is high, and false if not.
+*/
 bool DE2_IF::signalUnlock()
 {
 		if (PINC & 0b00001000)
@@ -18,8 +28,11 @@ bool DE2_IF::signalUnlock()
 	return signalUnlock_;
 }
 
+/*
+* @brief $name to receive high signal from arduino pin 58
+* set attribute signalPernLock_ to true if three password attempts was incorrect.
+*/
 
-//sets attribute for permanent lock mode
 void DE2_IF::signalPermLock()
 {
 	if (PINC & 0b00100000)
@@ -32,7 +45,9 @@ void DE2_IF::signalPermLock()
 	}
 }
 
-
+/*
+* @brief $name to print out messages via UART COM port
+*/
 void DE2_IF::print() const
 {
 	//if statement to print pass / fail of password entry
