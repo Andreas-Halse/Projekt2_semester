@@ -3,8 +3,9 @@
 class Motor_module
 {
 public:
-    Motor_module();
+    Motor_module(); // constructor
     
+    // Funktioner herunder
     void MotorOn();
     void MotorOff();
 
