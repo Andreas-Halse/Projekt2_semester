@@ -1,39 +1,44 @@
-/*
+﻿/*
  Name:		x_10_reciever.ino
  Created:	12/1/2021 10:55:26 AM
  Author:	oscar
 */
 #include <avr/io.h>
-#define SIZE 20
+#define SIZE 35
 // the setup function runs once when you press reset or power the board
 ISR(INT3_vect); // prototype
-int messageArray[50];
-int compareArray[50];
-int volatile i = 0;
-int volatile zeroCounter;
-bool volatile messageDone = false;
-bool volatile arrayBool = true;
+int messageArray[SIZE];				// the array in which the command is stored
+int compareArray[SIZE];				// the compare array that verifies the data  
+int volatile i = 0;					// counts number of databits recieved per array
+bool volatile arrayBool = true;		// Is used to switch which array the data is loaded into
+int volatile zeroCounter;			// counts zeroes
+int volatile oneCounter;			// counts ones
+
+bool volatile messageDone = false;	// pr	ints the message
 
 void setup()
 {
-	pinMode(53, INPUT);
-	DDRA = 0x00;
-	pinMode(53, INPUT);
-	EICRA = 0b11000000; // trigger rising edge
-	EIMSK |= 0b00001000; //  activate INT3
-	sei(); // enable interrupts
-	Serial.begin(9600);
+	
+	DDRA = 0x00;			// set to input to enable interrupt by pressing SW3
+	pinMode(53, INPUT);		// the data read pin
+	EICRA |= 0b01000000;		// any edge
+	EIMSK |= 0b00001000;	//  activate INT3
+	sei();					// enable interrupts
+	Serial.begin(9600);		//not used in final build
 }
 
-void loop()
+void loop() 
 {
-	if (messageDone)
+	if (messageDone) //
 	{
-		
-		Serial.print("Both messages recieved comparing messages\n");
+		cli();
 		//kald Andreas compare shit
+		//Kald elisabeths funktions-vælger shit
+		// from here to the end of the second for loop is used for testing
+		Serial.print("Both messages recieved comparing messages\n");
+		
 		Serial.print("the first array\n");
-		for (int element : messageArray)
+		for (int element : messageArray)//prints the array
 		{
 			Serial.println(element);
 		}
@@ -42,75 +47,87 @@ void loop()
 		{
 			Serial.println(element);
 		}
+
 		messageDone = false;
+		
+	
+
 		sei();
 	}
 }
 ISR(INT3_vect)
 {
-	Serial.print("interrupt triggered  \n ");
-	if (i < (SIZE+1))
+	
+	if (oneCounter >= 3)
 	{
-		Serial.println(digitalRead(53));
-		if (arrayBool)
+		if (i <= (SIZE + 1))
 		{
-			loadIntoArray(messageArray);
+			Serial.println(digitalRead(53));
+			if (arrayBool)		// if true load into messageArray if false compareArray
+			{
+				loadIntoArray(messageArray);
+				if (zeroCounter >= 3)		//counts number of zeroes to check for stopbits
+				{
+					//Serial.print("zeroCounter overflow\n  ");
+					arrayBool = false;		//switch input array
+					zeroCounter = 0;		//reset zerocounter
+					i = 0;					// reset databit recieved counter to ensure
+					oneCounter = 0;
+				}
+			}
+			else								//Same thing
+			{
+				loadIntoArray(compareArray);
 				if (zeroCounter >= 3)
 				{
-					Serial.print("zeroCounter overflow\n  ");
-					arrayBool=false;
+					//Serial.print("zeroCounter overflow  AGAIN \n");
 					zeroCounter = 0;
+					arrayBool = true;
+					messageDone = true;
 					i = 0;
+					oneCounter = 0;
 				}
+			}
 		}
 		else
 		{
-			loadIntoArray(compareArray);
-				if (zeroCounter >= 3)
-				{
-					Serial.print("zeroCounter overflow  AGAIN \n");
-					zeroCounter = 0;
-					arrayBool=true;
-					messageDone = true;
-					cli();
-					i = 0;
-				}
+			Serial.print("array too small");
 		}
 	}
-	else
+	else if (digitalRead(53) == HIGH)
 	{
-		if (!arrayBool&&!(messageArray==compareArray))
+		oneCounter++;
+		if(arrayBool)
 		{
-			Serial.print("beskederne er ikke ens. Fejl.\n");
-			messageDone = true;
-			zeroCounter = 0;
-			arrayBool = true;
+			loadIntoArray(messageArray);
 		}
-		arrayBool = !arrayBool;
+		else 
+		{
+			loadIntoArray(compareArray);
+		}
+		
 	}
-
-
 }
 
 
 
 
 
-void loadIntoArray(int arr[20])
+void loadIntoArray(int arr[SIZE])
 {
-	if (digitalRead(53) == HIGH)
+	if (digitalRead(53) == HIGH)//if datapin high
 	{
-		Serial.print("Test1\n");
+		//Serial.print("Test1\n");
 
-		arr[i] = 1;
-		i++;
-		zeroCounter = 0;
+		arr[i] = 1;		//load in i
+		i++;			//count up databit counter
+		zeroCounter = 0;//reset zerocounter
 	}
 	else if(digitalRead(53)==LOW)
 	{
-		Serial.print("Test2\n");
+		//Serial.print("Test2\n");
 		arr[i] = 0;
 		i++;
-		zeroCounter++;
+		zeroCounter++;	// count up zerocounter
 	}
 }

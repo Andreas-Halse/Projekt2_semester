@@ -1,0 +1,29 @@
+Quartus II Archive log --	C:/Users/oscar/OneDrive - Aarhus Universitet/Skrivebord/Github2/Projekt2_semester/DE2 Board kode/Code.qarlog
+
+Archive:	C:/Users/oscar/OneDrive - Aarhus Universitet/Skrivebord/Github2/Projekt2_semester/DE2 Board kode/Code.qar
+Date:		Mon Dec 13 18:20:17 2021
+Quartus II 64-Bit		13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/Users/oscar/Downloads/Code_Lock_restored/State_Machine.qpf
+C:/Users/oscar/Downloads/Code_Lock_restored/State_Machine.qsf
+C:/Users/oscar/Downloads/Code_Lock_restored/State_Machine.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/State_Machine_tester.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/Waveform.vwf
+C:/Users/oscar/Downloads/Code_Lock_restored/Wrong_Code.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/assignment_defaults.qdf
+C:/Users/oscar/Downloads/Code_Lock_restored/code_lock.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/code_lock_advanced.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/code_lock_advanced_2.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/code_lock_advanced_2_tester.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/code_lock_advanced_tester.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/code_lock_tester.vhd
+C:/Users/oscar/Downloads/Code_Lock_restored/db/State_Machine.sim.vwf
+C:/Users/oscar/Downloads/Code_Lock_restored/fun_sim_2.vwf
+C:/Users/oscar/Downloads/Code_Lock_restored/func_sim.vwf
+C:/Users/oscar/Downloads/Code_Lock_restored/incremental_db/compiled_partitions/State_Machine.db_info
+C:/Users/oscar/Downloads/Code_Lock_restored/synchroniser.vhd
+	======= Total: 18 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

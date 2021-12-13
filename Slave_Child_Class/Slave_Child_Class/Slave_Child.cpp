@@ -7,7 +7,6 @@
 
 Slave_Child::Slave_Child()
 {	
-	//opsætning af association
 }
 
 
@@ -18,7 +17,6 @@ Slave_Child::Slave_Child()
 */
 bool Slave_Child::activate()
 {
-	if ((PINA & 0b00001000) == 0)			//ikke korrekt betingelse, dette skal være funktionskaldet fra masteren
 	PORTC = 0x00;							//sætter alle ben til port C til 0
 	state_ = 1;								//opdater status
 }
@@ -30,7 +28,6 @@ bool Slave_Child::activate()
 */
 bool Slave_Child::deactivate()
 {
-	if ((PINA & 0b00001000) == 1)			//ikke korrekt betingelse, skal være funktionskaldet fra masteren
 	PORTC = 0xFF;							//sætter alle ben til port C til 0
 	state_ = 0;								//opdater status
 }

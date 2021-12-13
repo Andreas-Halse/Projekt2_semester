@@ -32,6 +32,5 @@ M.MotorOn(); // tænder motor
 M.CurtainDown(); // retning ændret
 
 _delay_ms(10000); // venter 10 sekunder
-
 }
 }
