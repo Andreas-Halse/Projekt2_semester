@@ -15,8 +15,9 @@ void setup()
   
 
 
-    Serial.begin(9600); // sætter Baudrate
+    Serial.begin(9600); // ster Baudrate
     //pinMode(35, OUTPUT);
+    Serial.print("tis");
     
 
 }
