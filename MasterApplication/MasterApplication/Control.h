@@ -19,6 +19,7 @@ public:
 	void sendMessage();
 	void prepareMessageTox10(const char* a);
 	void printStartMenu(); 
+	void stop();
 
 private:
 	int byteReceived;

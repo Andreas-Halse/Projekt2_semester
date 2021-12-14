@@ -63,16 +63,23 @@ void Control::printStartMenu()
 	if (DE2Ptr_->signalUnlock())
 	{
 		Serial.print("-------------------------- \n Welcome to your Smart Home! \n -------------------------- ");
-		Serial.print("For at tænde lys, indtast O");
-		Serial.print("For at slukke lys, indtast F");
-		Serial.print("For at skrue op for lysstyrken, indtast på I");
-		Serial.print("For at skrue ned for lysstyrken, indtast på B");
-		Serial.print("For at slå låsen på kemikalieskabet til, indtast L");
-		Serial.print("For at slå låsen på kemikalieskabet fra, indtast D");
-		Serial.print("For at rulle gardinet op, indtast U");
-		Serial.print("For at rulle gardinet ned, indtast C");
-		Serial.print("For at stoppe alle systemer, indtast Q");
+		Serial.print("For at tænde lys, indtast O\n");
+		Serial.print("For at slukke lys, indtast F\n");
+		Serial.print("For at skrue op for lysstyrken, indtast på I\n");
+		Serial.print("For at skrue ned for lysstyrken, indtast på B\n");
+		Serial.print("For at slå låsen på kemikalieskabet til, indtast L\n");
+		Serial.print("For at slå låsen på kemikalieskabet fra, indtast D\n");
+		Serial.print("For at rulle gardinet op, indtast U\n");
+		Serial.print("For at rulle gardinet ned, indtast C\n");
+		Serial.print("For at stoppe alle systemer, indtast Q\n");
 	}
+}
+
+void Control::stop()
+{
+	control.prepareMessageTox10(LightsOff);
+	control.prepareMessageTox10(DeactivateLock);
+	control.prepareMessageTox10(RollUpCurtain);
 }
 
 

@@ -24,8 +24,19 @@
     <ClInclude Include="__vm\.Slave_Array_Read.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Slave_Array_Read.h">
+    <ClInclude Include="Slave_child.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Slave_child_array.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Slave_child.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Slave_child_array.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
