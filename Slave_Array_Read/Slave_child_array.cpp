@@ -5,12 +5,19 @@
 /*
 d. 13-12-2021
 author: 1. version:  Elisabeth, sekundær: Andreas.
+
+
 author: 2. version: Elisabeth, d.14-12-2021
+
+rettelser: objekt slave_child kunne ikke oprettes der både var et array og en klasse med samme navn
+
+
 */
 
 
 Slave_Array_Read_cpp::Slave_Array_Read_cpp()
 {
+
 }
 
 bool Slave_Array_Read_cpp::StartSekvensValidate(int arrayIn[])
@@ -63,19 +70,18 @@ bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
 
 void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 {
-	Slave_Child A;
+	Slave_Child_1 A;
 	if (StartSekvensValidate(arrayIn) == true)
 	{
 		if (AdresseSekvensValidate(arrayIn) == true)
 		{
 			for (int x = 10; x <= 17; x++)
 			{
-				if(activateChild[x] == arrayIn[x[]
-					(activate[x] == arrayIn[x])
+				if(activateChild[x] == arrayIn[x])
 				{
 					A.activate();
 				}
-				else if (deactivate[x] == arrayIn[x])
+				else if (deactivateChild[x] == arrayIn[x])
 				{
 					A.deactivate();
 				}
@@ -97,13 +103,5 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 	{
 		// udskriv fejlmeddelse2 ( start sek.er ikke ens)
 	}
-
-
-
-
-
-
-
-
 
 }
