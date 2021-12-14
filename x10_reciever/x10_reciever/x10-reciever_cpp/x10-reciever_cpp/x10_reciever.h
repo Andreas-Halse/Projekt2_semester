@@ -3,20 +3,17 @@
 
 int messageArray[SIZE];				// the array in which the command is stored
 int compareArray[SIZE];				// the compare array that verifies the data  
-bool volatile messageDone;
+bool volatile messageDone=false;
 
 
-
-bool volatile messageDone = false;	// pr	ints the message
 class x10_reciever
 {
 public:
 	x10_reciever();
-	~x10_reciever();
 	void initReciever();
 	void checkForStopBits();
 	bool startBitCheck();
-	void loadIntoArray(int[]);
+	void loadIntoArray(int[SIZE]);
 	void readData();
 	
 private:
@@ -27,9 +24,5 @@ private:
 };
 
 x10_reciever::x10_reciever()
-{
-}
-
-x10_reciever::~x10_reciever()
 {
 }
