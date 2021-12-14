@@ -80,7 +80,7 @@ void x10_reciever::checkForStopBits()
 			_messageDone = true;
 		}
 	}
-	
+
 }
 
 void x10_reciever::readData()
@@ -97,7 +97,7 @@ void x10_reciever::readData()
 		{
 			loadIntoArray(_compareArray);
 			checkForStopBits();
-		}	
+		}
 	}
 	else
 	{

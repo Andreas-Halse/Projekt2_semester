@@ -69,16 +69,16 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 		{
 			for (int x = 10; x <= 17; x++)
 			{
-				if (lightsOn[x] == arrayIn[x])
+				if (lightsOn_array[x] == arrayIn[x])
 				{
 					A.turnOn();
 				}
-				else if (turnOff[x] == arrayIn[x])
+				else if (lightsOff_array[x] == arrayIn[x])
 				{
 					A.turnOff();
 				}
 
-				else if (increaseBrightness[x] == arrayIn[x])
+				else if (increaseBrightness_array[x] == arrayIn[x])
 				{
 					A.increaseBrightness();
 				}

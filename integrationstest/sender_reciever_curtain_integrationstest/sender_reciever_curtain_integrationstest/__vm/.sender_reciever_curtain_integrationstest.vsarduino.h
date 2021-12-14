@@ -88,6 +88,6 @@ typedef void *__builtin_va_list;
 #define pgm_read_float(address_short) float()
 #define pgm_read_ptr(address_short)   short()
 
-#include "DE2_IF.ino"
+#include "sender_reciever_curtain_integrationstest.ino"
 #endif
 #endif

@@ -18,8 +18,12 @@ bool volatile messageDone = false;	// pr	ints the message
 
 void setup()
 {
-	
-
+	DDRA = 0x00;			// set to input to enable interrupt by pressing SW3
+	pinMode(51, INPUT);		// the data read pin
+	EICRA |= 0b01000000;		// any edge
+	EIMSK |= 0b00001000;	//  activate INT3
+	sei();					// enable interrupts
+	Serial.begin(9600);		//not used in final build
 }
 
 void loop() 
@@ -31,7 +35,7 @@ void loop()
 		//Kald elisabeths funktions-vælger shit
 		// from here to the end of the second for loop is used for testing
 		Serial.print("Both messages recieved comparing messages\n");
-		
+
 		Serial.print("the first array\n");
 		for (int element : messageArray)//prints the array
 		{
@@ -42,10 +46,6 @@ void loop()
 		{
 			Serial.println(element);
 		}
-
-		messageDone = false;
-		
-	
 
 		sei();
 	}
@@ -63,7 +63,7 @@ ISR(INT3_vect)
 				loadIntoArray(messageArray);
 				if (zeroCounter >= 3)		//counts number of zeroes to check for stopbits
 				{
-					//Serial.print("zeroCounter overflow\n  ");
+					Serial.print("zeroCounter overflow\n  ");
 					arrayBool = false;		//switch input array
 					zeroCounter = 0;		//reset zerocounter
 					i = 0;					// reset databit recieved counter to ensure
@@ -75,7 +75,7 @@ ISR(INT3_vect)
 				loadIntoArray(compareArray);
 				if (zeroCounter >= 3)
 				{
-					//Serial.print("zeroCounter overflow  AGAIN \n");
+					Serial.print("zeroCounter overflow  AGAIN \n");
 					zeroCounter = 0;
 					arrayBool = true;
 					messageDone = true;
@@ -102,10 +102,6 @@ ISR(INT3_vect)
 		}
 		
 	}
-	else
-	{
-		oneCounter = 0;//Makes sure random faulty ones are sorted out
-	}
 }
 
 
@@ -116,7 +112,7 @@ void loadIntoArray(int arr[SIZE])
 {
 	if (digitalRead(53) == HIGH)//if datapin high
 	{
-		//Serial.print("Test1\n");
+		Serial.print("Test1\n");
 
 		arr[i] = 1;		//load in i
 		i++;			//count up databit counter
@@ -124,7 +120,7 @@ void loadIntoArray(int arr[SIZE])
 	}
 	else if(digitalRead(53)==LOW)
 	{
-		//Serial.print("Test2\n");
+		Serial.print("Test2\n");
 		arr[i] = 0;
 		i++;
 		zeroCounter++;	// count up zerocounter

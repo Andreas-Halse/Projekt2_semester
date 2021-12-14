@@ -18,8 +18,7 @@ public:
 	void prepareNewMessageFromPc();
 	void sendMessage();
 	void prepareMessageTox10(const char* a);
-	void printStartMenu(); 
-	void stop();
+	void printStartMenu() const; 
 
 private:
 	int byteReceived;

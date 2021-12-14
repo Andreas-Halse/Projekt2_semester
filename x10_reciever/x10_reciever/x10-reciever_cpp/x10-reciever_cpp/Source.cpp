@@ -1,10 +1,14 @@
 #include "x10_reciever.h"
 #include <avr/io.h>
 #include <Arduino.h>
+
+
+
 x10_reciever reciever;
 
 ISR(INT3_vect)
 {
+
 	if (reciever.startBitCheck())
 	{
 		reciever.readData();
@@ -15,11 +19,12 @@ ISR(INT3_vect)
 void setup()
 {
 	reciever.initReciever();
+	
 }
 
 void loop()
 {
-	if (messageDone) //
+	if (reciever._messageDone) //
 	{
 		cli();
 		//kald Andreas compare shit
@@ -28,17 +33,17 @@ void loop()
 		Serial.print("Both messages recieved comparing messages\n");
 
 		Serial.print("the first array\n");
-		for (int element : messageArray)//prints the array
+		for (int element : reciever._messageArray)//prints the array
 		{
 			Serial.println(element);
 		}
 		Serial.print("the second array\n");
-		for (int element : compareArray)
+		for (int element : reciever._compareArray)
 		{
 			Serial.println(element);
 		}
 
-		messageDone = false;
+		reciever.setMessageDone(false);
 
 
 
