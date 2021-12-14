@@ -42,14 +42,14 @@ void Lys_Class::increaseBrightness()	//Øger lys intensitet
 
 void Lys_Class::decreaseBrightness()	//Sænker lys intensitet
 {
-	if (intensitet >= 55)				//Validering
+	if (intensitet > 54)				//Validering
 	{
 		intensitet = intensitet - 55;
 		analogWrite(35, intensitet);
 	}
 	else
 	{
-		intensitet = 0;
+		intensitet = 55;
 		analogWrite(35, intensitet);
 	}
 }
