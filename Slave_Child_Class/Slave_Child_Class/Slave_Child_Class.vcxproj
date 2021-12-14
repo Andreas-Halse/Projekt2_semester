@@ -112,6 +112,7 @@
     <ClInclude Include="__vm\.Slave_Child_Class.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Array_child.cpp" />
     <ClCompile Include="dummyMain.cpp" />
     <ClCompile Include="Slave_Child.cpp" />
   </ItemGroup>
