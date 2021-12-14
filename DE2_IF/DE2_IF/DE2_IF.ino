@@ -17,7 +17,7 @@ void setup() {
 }
 
 
-DE2_IF test;	//globalt objekt til test
+DE2_IF test(false,false);	//globalt objekt til test
 
 // the loop function runs over and over again until power down or reset
 void loop() {
