@@ -58,6 +58,7 @@ void loop() {
 		// SE MIG SE MIG SE MIG
 		// SE MIG SE MIG SE MIG
 		// HER SKAL INDSAETTES DIT OBJEKT.denOnskedeFunktion(reciever._messageArray);
+		// fx
 		//arrayReader.FunctionsValidateCall(reciever._messageArray);
 		reciever.setMessageDone(false);
 		sei();
