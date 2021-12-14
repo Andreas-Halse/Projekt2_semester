@@ -19,12 +19,7 @@ bool volatile messageDone = false;	// pr	ints the message
 void setup()
 {
 	
-	DDRA = 0x00;			// set to input to enable interrupt by pressing SW3
-	pinMode(53, INPUT);		// the data read pin
-	EICRA |= 0b01000000;		// any edge
-	EIMSK |= 0b00001000;	//  activate INT3
-	sei();					// enable interrupts
-	Serial.begin(9600);		//not used in final build
+
 }
 
 void loop() 
@@ -106,6 +101,10 @@ ISR(INT3_vect)
 			loadIntoArray(compareArray);
 		}
 		
+	}
+	else
+	{
+		oneCounter = 0;//Makes sure random faulty ones are sorted out
 	}
 }
 
