@@ -26,7 +26,6 @@ bool DE2_IF::signalUnlock()
 	else
 	{
 		signalUnlock_ = false;
-
 	}
 	return signalUnlock_;
 }

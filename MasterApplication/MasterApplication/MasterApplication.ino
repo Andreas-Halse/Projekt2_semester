@@ -109,6 +109,11 @@ void loop()
 			control.prepareNewMessageFromPc();
 			control.prepareMessageTox10(DecreaseBrightness);
 		}
+		if (control.getNumberFromPC() == 81)	// 81 = Q. Quit all
+		{
+			control.prepareNewMessageFromPc();
+			control.stop();
+		}
 	}
 }
 

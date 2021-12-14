@@ -15,27 +15,14 @@ DE2_IF test;		//globalt objekt til test
 void setup() {
 	Serial.begin(9600);
 	DDRC = 0x00;
-
 }
 
 
 void loop() {
-	
 	test.signalUnlock();
+	test.print();
+	test.signalPermLock();
 	test.print();
 }
 
-//int main(){
-//
-//	DE2_IF test;		//globalt objekt til test
-//
-////Setup:
-//	Serial.begin(9600);
-//	DDRC = 0x00;
-//
-//	for (;;) {
-//
-//		test.signalUnlock();
-//		test.print();
-//	}
-//}
+
