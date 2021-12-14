@@ -23,5 +23,6 @@ private:
 	bool _arrayBool = true;		// Is used to switch which array the data is loaded into
 	int _zeroCounter=0;			// counts zeroes
 	int  _oneCounter=0;			// counts ones
+};
 	
 };
