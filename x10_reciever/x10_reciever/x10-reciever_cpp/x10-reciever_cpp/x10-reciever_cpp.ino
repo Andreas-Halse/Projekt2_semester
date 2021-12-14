@@ -1,5 +1,11 @@
 #include "x10_reciever.h"
+#include <Arduino.h>
+#include <avr/io.h>
 
+
+x10_reciever::x10_reciever()
+{
+}
 
 void x10_reciever::initReciever()
 {

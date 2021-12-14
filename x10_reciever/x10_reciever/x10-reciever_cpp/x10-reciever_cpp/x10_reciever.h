@@ -22,7 +22,3 @@ private:
 	int _zeroCounter=0;			// counts zeroes
 	int  _oneCounter=0;			// counts ones
 };
-
-x10_reciever::x10_reciever()
-{
-}
