@@ -40,7 +40,7 @@ bool Slave_Array_Read::AdresseSekvensValidate(int arrayIn[])
 	int match = 0;
 	if (StartSekvensValidate(arrayIn) == true)	//hvis start sekvens er ens, gÂr den ned i det her loop og tjekker 
 	{
-		for (int j = 4; j <= 11; j++)
+		for (int j = 5; j <= 13; j++)
 		{
 			if (arrayIn[j] == curtain[j])
 			{
@@ -70,7 +70,7 @@ void Slave_Array_Read::FunctionsValidateCall(int arrayIn[])
 	{
 		if (AdresseSekvensValidate(arrayIn) == true)
 		{
-			for (int x = 10; x <= 17; x++)
+			for (int x = 15; x <= 30; x++)
 			{
 				if (curtain[x] == arrayIn[x])
 				{
@@ -86,15 +86,15 @@ void Slave_Array_Read::FunctionsValidateCall(int arrayIn[])
 					counter_stop = counter_stop +1;
 				}
 			}
-		if (counter_rollUp == 8)
+		if (counter_rollUp == 16)
 		{
 			A.rollUp();
 		}
-		if (counter_rollDown == 8)
+		if (counter_rollDown == 16)
 		{
-			A.rollUp();
+			A.rollDown();
 		}
-		if (counter_stop == 8)
+		if (counter_stop == 16)
 		{
 			A.stop();
 		}
