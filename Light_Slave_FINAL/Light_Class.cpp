@@ -10,7 +10,7 @@ Lys_Class::Lys_Class()
 
 void Lys_Class::turnOn()				//Tænder lys
 {
-	if (intensitet <= 0)				//Hvis intensitet er 0 - så tænd 100%
+	if (intensitet <= 0)				//Hvis intensitet er 0 - sEtænd 100%
 	{
 		intensitet = 220;
 		analogWrite(35, intensitet);

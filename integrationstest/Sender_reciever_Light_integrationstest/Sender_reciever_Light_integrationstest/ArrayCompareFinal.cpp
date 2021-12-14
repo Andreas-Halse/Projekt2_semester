@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ArrayCompareFinal::ArrayCompareFinal(int A1[], int A2[])
+ArrayCompareFinal::ArrayCompareFinal()
 {
 
 }
@@ -20,7 +20,7 @@ bool ArrayCompareFinal::ArrayDataCompare(int A1[], int A2[])
 		if (A1[index] != A2[index])
 		{
 			digitalWrite(13, HIGH);
-			return false; 
+			return false;
 		}
 		else
 		{
