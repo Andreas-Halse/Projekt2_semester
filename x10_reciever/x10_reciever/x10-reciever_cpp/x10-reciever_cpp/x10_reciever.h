@@ -24,5 +24,3 @@ private:
 	int _zeroCounter=0;			// counts zeroes
 	int  _oneCounter=0;			// counts ones
 };
-	
-};

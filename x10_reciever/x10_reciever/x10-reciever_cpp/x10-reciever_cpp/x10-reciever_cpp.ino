@@ -18,11 +18,6 @@ void x10_reciever::initReciever()
 	Serial.print("starting...\n");
 }
 
-
-x10_reciever::x10_reciever()
-{
-}
-
 bool x10_reciever::startBitCheck()
 {
 	if (_oneCounter >= 3)
