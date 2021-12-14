@@ -2,8 +2,10 @@
 #include <avr/io.h>
 #include <Arduino.h>
 
-/*@brief default constructor
-* @params bool to set signalUnlock, bool to set signalPermanentLock
+/*
+*@Author Julie Zepernick Jepsen
+*@brief default constructor
+*@params bool to set signalUnlock, bool to set signalPermanentLock
 */
 DE2_IF::DE2_IF(bool sigUnlock, bool sigPermLock)
 {
@@ -12,7 +14,7 @@ DE2_IF::DE2_IF(bool sigUnlock, bool sigPermLock)
 }
 
 /*
-* @brief method to recieve high signal from arduino pin 56.
+* @brief $name to recieve high signal from arduino pin 56.
 * Set attribute to true if pin is high, and false if not.
 */
 bool DE2_IF::signalUnlock()

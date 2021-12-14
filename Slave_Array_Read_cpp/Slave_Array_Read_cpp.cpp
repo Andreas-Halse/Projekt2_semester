@@ -3,8 +3,8 @@
 
 /*
 d. 13-12-2021
-author: 1. version Julie
-author: 2. version Elisabeth, sekundær: Andreas.
+author: 1. version:  Elisabeth, sekundær: Andreas.
+author: 2. version:
 */
 
 
@@ -69,11 +69,11 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 		{
 			for (int x = 10; x <= 17; x++)
 			{
-				if (activateChild[x] == arrayIn[x])
+				if (activate[x] == arrayIn[x])
 				{
 					A.activate();
 				}
-				else if (deactivateChild[x] == arrayIn[x])
+				else if (deactivate[x] == arrayIn[x])
 				{
 					A.deactivate();
 				}

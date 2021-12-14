@@ -2,7 +2,7 @@
 /*
 * @Author Julie Zepernick Jepsen
 * @Date 13-12-2021
-* @brief class for checking password pass / fail from  DE2
+* @brief class $name for checking password pass / fail from  DE2
 * @attribute inclass initilization of bools
 */
 

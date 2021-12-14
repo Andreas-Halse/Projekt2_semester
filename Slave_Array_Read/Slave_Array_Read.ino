@@ -7,7 +7,6 @@
 using namespace std;
 #include "Slave_Array_Read.h"
 
-
 /*
 00..3 plads = startsekvens
 4..7. plads= adresse til subsystemer
