@@ -1,5 +1,4 @@
 #pragma once
-#include <Slave_Array_Read.h>
 
 class Lys_Class
 {
@@ -10,6 +9,10 @@ public:
 	void turnOff();
 	void increaseBrightness();
 	void decreaseBrightness();
+
+	int volatile intensitet = 220;
 };
+
+
 
 
