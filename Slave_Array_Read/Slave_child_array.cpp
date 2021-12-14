@@ -11,6 +11,7 @@ author: 2. version: Elisabeth, d.14-12-2021
 
 Slave_Array_Read_cpp::Slave_Array_Read_cpp()
 {
+
 }
 
 bool Slave_Array_Read_cpp::StartSekvensValidate(int arrayIn[])
@@ -70,12 +71,11 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 		{
 			for (int x = 10; x <= 17; x++)
 			{
-				if(activateChild[x] == arrayIn[x[]
-					(activate[x] == arrayIn[x])
+				if(activateChild[x] == arrayIn[x])
 				{
 					A.activate();
 				}
-				else if (deactivate[x] == arrayIn[x])
+				else if (deactivateChild[x] == arrayIn[x])
 				{
 					A.deactivate();
 				}

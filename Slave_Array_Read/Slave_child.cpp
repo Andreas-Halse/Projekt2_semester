@@ -1,12 +1,15 @@
 #include "Slave_child.h"
+#include "Slave_child_array.h"
+
 
 /*
 * @brief constructor til klassen
 *
 */
 
-Slave_Child::Slave_Child()
+Slave_Child::Slave_Child(Slave_Array_Read_cpp *ArrayPtr)
 {
+	ArrayPtr_ = ArrayPtr;
 }
 
 
