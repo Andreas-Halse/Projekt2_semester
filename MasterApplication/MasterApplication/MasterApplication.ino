@@ -45,7 +45,7 @@ void setup()
 	sei();
 
 	Serial.print("Enter password");
-	//control.printStartMenu();
+	control.printStartMenu();
 }
 
 

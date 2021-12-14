@@ -57,27 +57,18 @@ void DE2_IF::Login()
 	//if statement to print pass / fail of password entry
 	if (signalUnlock_ == true)
 	{
-		for (size_t i = 0; i < 1; i++)
-		{
 			Serial.print("Password Correct \n");
-		}
 	}
 
 	else if (signalUnlock_ == false)
 	{
-		for (size_t i = 0; i < 1; i++)
-		{
 			Serial.print("Password Incorrect \n");
-		}
 	}
 
 	//if statement to print permLock mode
 	if (signalPermLock_ == true)
 	{
-		for (size_t i = 0; i < 1; i++)
-		{
 			Serial.print("System is in permanent lock. \n Please go to user manual for reset. ");
-		}
 	}
 
 }
