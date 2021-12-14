@@ -7,7 +7,11 @@
 *
 */
 
-Slave_Child::Slave_Child(Slave_Array_Read_cpp *ArrayPtr)
+Slave_Child_1::Slave_Child_1()
+{
+}
+
+Slave_Child_1::Slave_Child_1(Slave_Array_Read_cpp *ArrayPtr)
 {
 	ArrayPtr_ = ArrayPtr;
 }
@@ -18,7 +22,7 @@ Slave_Child::Slave_Child(Slave_Array_Read_cpp *ArrayPtr)
 * @returns bool status værdi for at kunne sende status til master
 *
 */
-bool Slave_Child::activate()
+bool Slave_Child_1::activate()
 {
 	PORTC = 0x00;							//sætter alle ben til port C til 0
 	state_ = 1;								//opdater status
@@ -29,7 +33,7 @@ bool Slave_Child::activate()
 * @returns bool status værdi for at kunne sende status til master
 *
 */
-bool Slave_Child::deactivate()
+bool Slave_Child_1::deactivate()
 {
 	PORTC = 0xFF;							//sætter alle ben til port C til 0
 	state_ = 0;								//opdater status
@@ -41,7 +45,7 @@ bool Slave_Child::deactivate()
 * @returns void
 *
 */
-void Slave_Child::stop()
+void Slave_Child_1::stop()
 {
 	if (true)								//ikke korrekt betingelse, skal være funktionskaldet fra masteren
 		deactivate();

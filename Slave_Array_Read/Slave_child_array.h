@@ -38,7 +38,8 @@ Slave_light funktioner global initialisering :*/
 12.-13=suffix 01
 14-29.= funktion ( 16 pladser)
 30.-31=suffix = 10
-32.-34= stop bit 000
+32.-34
+= stop bit 000
 */
 const int Slave_Child[12] = { 1,1,1,0,1,0,0,1,1,0,0,1};
 const int activateChild[34] = { 1,1,1,0,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,0 };

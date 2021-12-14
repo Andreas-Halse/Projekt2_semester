@@ -6,10 +6,11 @@
 	*/
 
 
-	class Slave_Child
+	class Slave_Child_1
 	{
 	public:
-		Slave_Child(Slave_Array_Read_cpp *ArrayPtr);
+		Slave_Child_1();
+		Slave_Child_1(Slave_Array_Read_cpp *ArrayPtr);
 		bool activate();
 		bool deactivate();
 		void stop();

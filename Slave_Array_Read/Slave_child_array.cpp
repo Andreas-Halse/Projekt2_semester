@@ -64,7 +64,7 @@ bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
 
 void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 {
-	Slave_Child A;
+	Slave_Child_1 A;
 	if (StartSekvensValidate(arrayIn) == true)
 	{
 		if (AdresseSekvensValidate(arrayIn) == true)
@@ -97,13 +97,5 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 	{
 		// udskriv fejlmeddelse2 ( start sek.er ikke ens)
 	}
-
-
-
-
-
-
-
-
 
 }
