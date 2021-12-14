@@ -5,7 +5,13 @@
 /*
 d. 13-12-2021
 author: 1. version:  Elisabeth, sekundær: Andreas.
+
+
 author: 2. version: Elisabeth, d.14-12-2021
+
+rettelser: objekt slave_child kunne ikke oprettes der både var et array og en klasse med samme navn
+
+
 */
 
 
