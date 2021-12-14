@@ -8,22 +8,19 @@
 
  }
     
-void Motor_module::MotorOn()
+void Motor_module::rollDown()
     {
-        digitalWrite(53, HIGH); // tænder motor
+        digitalWrite(33, HIGH); // tænder motor
+        digitalWrite(31, HIGH); // gardin 1. retning
     }
 
-void Motor_module::MotorOff()
+void Motor_module::rollUp()
     {
-        digitalWrite(53, LOW); // slukker motor
+        digitalWrite(33, LOW); // slukker motor
+        digitalWrite(31, LOW); // gardin 2. retning
     }
 
-void Motor_module::CurtainUp()
-    {
-        digitalWrite(51, HIGH); // gardin 1. retning
-    }
-
-void Motor_module::CurtainDown()
-    {
-        digitalWrite(51, LOW); // gardin 2. retning
-    }
+void Motor_module::stop()
+{
+  digitalWrite(33, LOW); // slukker motor  
+}
