@@ -1,7 +1,6 @@
 #include "Light_Class.h"
 #include <avr/io.h>
 #include <Arduino.h>
-#include "Slave_Array_read.h"
 
 
 Lys_Class::Lys_Class()
@@ -12,44 +11,60 @@ void Lys_Class::turnOn()				//Tænder lys
 {
 	if (intensitet <= 0)				//Hvis intensitet er 0 - så tænd 100%
 	{
+		Serial.print("if Turn on/");
 		intensitet = 220;
-		analogWrite(35, intensitet);
+		analogWrite(2, intensitet);
 	}
 	else								//Ellers tænd ved sidste intensitet
 	{
-		analogWrite(35, intensitet);
+		Serial.print("Else Turn on/");
+		analogWrite(2, intensitet);
 	}
 }
 
 void Lys_Class::turnOff()
 {
-	analogWrite(35, LOW);
+	Serial.print("Turn off/");
+	analogWrite(2, LOW);
 }
 
 void Lys_Class::increaseBrightness()	//Øger lys intensitet
 {
 	if (intensitet <= 165)				//Validering
 	{
+		Serial.print("if incB/");
 		intensitet = intensitet + 55;
-		analogWrite(35, intensitet);
+		analogWrite(2, intensitet);
 	}
 	else
 	{
+		Serial.print("Else incB/");
 		intensitet = 220;
-		analogWrite(35, intensitet);
+		analogWrite(2, intensitet);
 	}
 }
 
 void Lys_Class::decreaseBrightness()	//Sænker lys intensitet
 {
-	if (intensitet > 54)				//Validering
+	if (intensitet >= 110)				//Validering
 	{
-		intensitet = intensitet - 55;
-		analogWrite(35, intensitet);
+		Serial.print("If decB/");
+		intensitet -= 55;
+		analogWrite(2, intensitet);
 	}
 	else
 	{
+		Serial.print("Else decB/");
 		intensitet = 55;
-		analogWrite(35, intensitet);
+		analogWrite(2, intensitet);
 	}
+
+
+
+	/*do
+	{
+		intensitet = intensitet - 55;
+		analogWrite(, intensitet);
+	} while (intensitet >= 110);
+	*/
 }

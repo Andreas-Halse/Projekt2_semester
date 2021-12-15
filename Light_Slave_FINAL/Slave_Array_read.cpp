@@ -76,7 +76,6 @@ void Slave_Array_Read::FunctionsValidateCall(int arrayIn[])
 
     if (StartSekvensValidate(arrayIn) == true)
     {
-        A.turnOn();
         if (AdresseSekvensValidate(arrayIn) == true)
         {
             

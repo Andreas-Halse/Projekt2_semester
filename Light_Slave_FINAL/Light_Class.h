@@ -11,7 +11,7 @@ public:
 	void decreaseBrightness();
 
 private:
-	int volatile intensitet = 220;
+	int intensitet;
 };
 
 
