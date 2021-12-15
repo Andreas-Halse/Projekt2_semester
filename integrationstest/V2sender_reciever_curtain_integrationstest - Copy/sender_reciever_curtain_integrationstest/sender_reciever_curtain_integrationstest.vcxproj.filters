@@ -15,39 +15,39 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Sender_reciever_Light_integrationstest.ino" />
+    <None Include="sender_reciever_curtain_integrationstest.ino" />
     <None Include="src\arduino folders read me.txt">
       <Filter>Misc Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.Sender_reciever_Light_integrationstest.vsarduino.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\x10_reciever.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\ArrayCompareFinal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Light_Class.h">
+    <ClInclude Include="__vm\.sender_reciever_curtain_integrationstest.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Slave_Array_read.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Motor_module.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="x10_reciever.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrayCompareFinal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\x10_reciever.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\ArrayCompareFinal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Light_Class.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Slave_Array_read.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Motor_module.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="x10_reciever.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrayCompareFinal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
