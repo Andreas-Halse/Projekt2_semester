@@ -8,25 +8,28 @@
 #include "x10_Sender.h"
 #include "DE2_IF.h"
 
-
-
 class Control
 {
 public:
 	Control(PC_IF*, x10_Sender*, DE2_IF*);
+
+	//PC_IF
 	int getNumberFromPC() const;
 	void prepareNewMessageFromPc();
+	bool UARTReady();
+
+	//x10_Sender
 	void sendMessage();
 	void prepareMessageTox10(const char* a);
-	void Login();
-	void printStartMenu() const; 
 
-
+	//DE2_IF
+	void checkPin();
+	void showMenu();
+	bool systemOpen();
 private:
 	int byteReceived;
 	PC_IF* pcPtr;
 	x10_Sender* senderPtr;
-	DE2_IF* DE2Ptr_;
-	int printCounter_ =0;
-
+	DE2_IF* de2Ptr;
 };
+

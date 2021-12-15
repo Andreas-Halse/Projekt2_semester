@@ -11,7 +11,7 @@
 //Global objects with appropriate initializations
 PC_IF pc;
 x10_Sender x10;
-DE2_IF password(false,false);
+DE2_IF password;
 Control control(&pc, &x10, &password);
 
 //Interrupt service routine for clock overflow -- attempts to send bit when clock 1 overflows
@@ -43,7 +43,9 @@ void setup()
 	//Test for clock signal on PORTB 
 	PORTL |= 0b00000100;
 	sei();
-	control.Login();
+
+	Serial.print("Enter password");
+	//control.printStartMenu();
 }
 
 
@@ -70,55 +72,61 @@ const char StopAll[SIZE] = { "11100101010101101010100101010110" };	//Q
 // Infinite loop() function
 void loop()
 {
-
-	if (Serial.available() > 0)
+	if (Serial.available())
 	{
-		pc.setMessageFromPC(Serial.read());
-		if (control.getNumberFromPC() == 76)	//76 = L. Activate EM lock. 
+		control.checkPin();
+		if (control.systemOpen())
 		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(ActivateLock);
-		}
-		if (control.getNumberFromPC() == 68)	//69 = D. Deactivate EM lock
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(DeactivateLock);
-		}
-		if (control.getNumberFromPC() == 85)	//85 = U. Roll up curtain
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(RollUpCurtain);
-		}
-		if (control.getNumberFromPC() == 67)	//67 = C. Roll down curtain
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(RollDownCurtain);
-		}
-		if (control.getNumberFromPC() == 79)	// 79 = O. Lights ON
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(LightsOn);
-		}
-		if (control.getNumberFromPC() == 70)	// 70 = F. Lights OFF
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(LightsOff);
-		}
-		if (control.getNumberFromPC() == 73)	// 73 = I.Increase brightness
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(IncreaseBrightness);
-		}
-		if (control.getNumberFromPC() == 66)	// 66 = B.Decrease brightness
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(DecreaseBrightness);
-		}
-		if (control.getNumberFromPC() == 81)	// 81 = Q. Quit all
-		{
-			control.prepareNewMessageFromPc();
-			control.prepareMessageTox10(StopAll);
+			control.showMenu();
+
+			pc.setMessageFromPC(Serial.read());
+			if (control.getNumberFromPC() == 76)	//76 = L. Activate EM lock. 
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(ActivateLock);
+			}
+			if (control.getNumberFromPC() == 68)	//69 = D. Deactivate EM lock
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(DeactivateLock);
+			}
+			if (control.getNumberFromPC() == 85)	//85 = U. Roll up curtain
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(RollUpCurtain);
+			}
+			if (control.getNumberFromPC() == 67)	//67 = C. Roll down curtain
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(RollDownCurtain);
+			}
+			if (control.getNumberFromPC() == 79)	// 79 = O. Lights ON
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(LightsOn);
+			}
+			if (control.getNumberFromPC() == 70)	// 70 = F. Lights OFF
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(LightsOff);
+			}
+			if (control.getNumberFromPC() == 73)	// 73 = I.Increase brightness
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(IncreaseBrightness);
+			}
+			if (control.getNumberFromPC() == 66)	// 66 = B.Decrease brightness
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(DecreaseBrightness);
+			}
+			if (control.getNumberFromPC() == 81)	// 81 = Q. Quit all
+			{
+				control.prepareNewMessageFromPc();
+				control.prepareMessageTox10(StopAll);
+			}
 		}
 	}
+	
 }
 

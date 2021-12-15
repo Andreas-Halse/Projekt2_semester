@@ -24,6 +24,9 @@
     <ClInclude Include="Slave_Child.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Slave_Array_Read_cpp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Slave_Child.cpp">

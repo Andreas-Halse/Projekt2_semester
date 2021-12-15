@@ -82,6 +82,10 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 				{
 					A.increaseBrightness();
 				}
+				else if (decreaseBrightness_array[x] == arrayIn[x])
+				{
+					A.decreaseBrightness();
+				}
 			}
 
 		}
