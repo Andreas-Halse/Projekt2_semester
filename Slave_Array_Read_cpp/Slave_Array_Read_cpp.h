@@ -25,14 +25,17 @@ public:
 
 };
 /*@brief
-0..3=startsekvens
-4-7. = adresse
-8.-9. = sufffix
+0..3=startsekvens 1110
+4-11. = adresse
+12.-13. = sufffix 01
 10.-18.=funktionskald
+19-20 = suffix 10
+stoo sekvens 000
 
 */
-int const child[12] = {1,1,1,0,1,0,0,1,1,0,0,1 }; //startsekvens 1110, manchester adresse
-const int activateChild[34] =   { 1,1,1,0//,1,0,0,1,1,0,0,1,//0,1,//1,0,1,0,1,0,1,0,1,0,1,0,1,0,//1,0};//startsekvens 1110, manchester adresse,suffix, funktionskald, suffix.
-const int deactivateChild[34] = { 1,1,1,0//,1,0,0,1,1,0,0,1,//0,1,//0,1,0,1,0,1,0,1,0,1,0,1,0,1,//1,0 };
-const int stop[34] =            { 1,1,1,0//,1,0,0,1,1,0,0,1,//0,1//1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1//1,0};  
+
+const int child_array[34] = { 1,1,1,0,1,0,0,1,1,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0 };
+const int activate_array[34] = { 1,1,1,0,1,0,0,1,1,0,0,1,0,1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,0,0,0 };
+const int deactivate_array[34] = { 1,1,1,0,1,0,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,0,0,0 };
+const int stop[34] = { 1,1,1,0,1,0,0,1,1,0,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,0,0,0 };
 

@@ -1,5 +1,5 @@
 
-#include "Slave_Array_read.h"
+#include "Slave_Array_Read_cpp.h"
 
 #include "Slave_Child.h"
 
@@ -21,7 +21,7 @@ bool Slave_Array_Read_cpp::StartSekvensValidate(int arrayIn[])
 	for (int i = 0; i <= 3; i++)	// tjekker startbit sekvens er ens
 	{
 
-		if (arrayIn[i] == Lys_Class[i])
+		if (arrayIn[i] == child_array[i])
 		{
 			startSekvens = true;
 		}
@@ -44,7 +44,7 @@ bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
 	{
 		for (int j = 4; j <= 11; j++)
 		{
-			if (arrayIn[j] == Lys_Class[j])
+			if (arrayIn[j] == child_array[j])
 			{
 				adresseSekvens = true;
 			}
@@ -64,25 +64,25 @@ bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
 
 void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 {
-	Lys_Class A;
+	Slave_Child A;
 	if (StartSekvensValidate(arrayIn) == true)
 	{
 		if (AdresseSekvensValidate(arrayIn) == true)
 		{
 			for (int x = 10; x <= 17; x++)
 			{
-				if (lightsOn[x] == arrayIn[x])
+				if (activate_array[x] == arrayIn[x])
 				{
-					A.turnOn();
+					A.activate();
 				}
-				else if (turnOff[x] == arrayIn[x])
+				else if (deactivate_array[x] == arrayIn[x])
 				{
-					A.turnOff();
+					A.deactivate();
 				}
 
-				else if (increaseBrightness[x] == arrayIn[x])
+				else if (arrayIn[x] == stop_array[x])
 				{
-					A.increaseBrightness();
+					A.stop();
 				}
 			}
 

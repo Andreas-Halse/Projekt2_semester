@@ -9,7 +9,7 @@ Lys_Class::Lys_Class()
 
 void Lys_Class::turnOn()				//Tænder lys
 {
-	if (intensitet <= 0)				//Hvis intensitet er 0 - så tænd 100%
+	if (intensitet <= 0)				//Hvis intensitet er 0 - sEtænd 100%
 	{
 		Serial.print("if Turn on/");
 		intensitet = 220;

@@ -108,6 +108,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Slave_Array_Read_cpp.h" />
     <ClInclude Include="Slave_Child.h" />
     <ClInclude Include="__vm\.Slave_Child_Class.vsarduino.h" />
   </ItemGroup>

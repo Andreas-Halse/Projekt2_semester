@@ -54,6 +54,23 @@ void Control::prepareMessageTox10(const char* a)
 }
 
 /*@Autor: Julie Zepernick Jepsen
+* @brief check password call checkPassword() via pointer
+* 
+*/
+void Control::Login()
+{
+	
+
+	if (printCounter_ <= 0)
+	{
+		DE2Ptr_->checkPassword();
+		printStartMenu();
+		printCounter_++;
+	}
+	printCounter_ = 0;
+}
+
+/*@Autor: Julie Zepernick Jepsen
 * @brief conditional if statement with pointer to DE2 class, checking for valid password
 * Printing options to user interface
 */
@@ -64,7 +81,7 @@ void Control::printStartMenu() const
 	{
 		if (DE2Ptr_->signalUnlock())
 		{
-			Serial.print("-------------------------- \n Welcome to your Smart Home! \n-------------------------- \n\n");
+			Serial.print("\n-------------------------- \n Welcome to your Smart Home! \n-------------------------- \n\n");
 			Serial.print("-------LIGHTS-------\n");
 			Serial.print("To turn ON your lights:        press O\n");
 			Serial.print("To turn OFF your lights:       press F\n");
@@ -74,9 +91,9 @@ void Control::printStartMenu() const
 			Serial.print("To activate lock on cabinet:   press L\n");
 			Serial.print("To deactivate lock on cabinet: press D\n");
 			Serial.print("\n-------CURTAINS-------\n");
-			Serial.print("To roll UP curtains:			 press U\n");
+			Serial.print("To roll UP curtains:			press U\n");
 			Serial.print("To roll DOWN curtains:		 press C\n");
-			Serial.print("\n Stop system: \n");
+			Serial.print("\n---- Stop system:------ \n");
 			Serial.print("To stop all systems:           press Q\n");
 		}
 	} while (!(DE2Ptr_->signalUnlock()));

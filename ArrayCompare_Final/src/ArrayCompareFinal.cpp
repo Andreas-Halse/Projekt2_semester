@@ -1,7 +1,7 @@
 #include <string.h>
 #include <avr/io.h>
 #include <Arduino.h>
-#include "ArrayCompareFinal.hpp"
+#include "ArrayCompareFinal.h"
 
 using namespace std;
 
