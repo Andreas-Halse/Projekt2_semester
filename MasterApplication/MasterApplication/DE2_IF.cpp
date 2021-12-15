@@ -10,9 +10,6 @@
 DE2_IF::DE2_IF(bool sigUnlock, bool sigPermLock)
 {
 	signalUnlock_ = sigUnlock;
-	signalPermLock_ = sigPermLock;
-	allowPrint_ = true;
-
 }
 
 /*
@@ -32,45 +29,19 @@ bool DE2_IF::signalUnlock()
 	return signalUnlock_;
 }
 
-/*
-* @brief $name to receive high signal from arduino pin 58
-* set attribute signalPernLock_ to true if three password attempts was incorrect.
-*/
-
-void DE2_IF::signalPermLock()
-{
-	if (PINC & 0b00100000)
-	{
-		signalPermLock_ = true;
-	}
-	else
-	{
-		signalPermLock_ = false;
-	}
-}
 
 /*
 * @brief $name to print out messages via UART COM port
 */
-void DE2_IF::Login()
+void DE2_IF::checkPassword()
 {
 	//if statement to print pass / fail of password entry
 	if (signalUnlock_ == true)
 	{
 			Serial.print("Password Correct \n");
-	}
 
-	else if (signalUnlock_ == false)
-	{
-			Serial.print("Password Incorrect \n");
 	}
-
-	//if statement to print permLock mode
-	if (signalPermLock_ == true)
-	{
-			Serial.print("System is in permanent lock. \n Please go to user manual for reset. ");
-	}
-
+	
 }
 
 

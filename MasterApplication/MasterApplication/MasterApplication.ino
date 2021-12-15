@@ -43,9 +43,7 @@ void setup()
 	//Test for clock signal on PORTB 
 	PORTL |= 0b00000100;
 	sei();
-
-	Serial.print("Enter password");
-	control.printStartMenu();
+	control.Login();
 }
 
 

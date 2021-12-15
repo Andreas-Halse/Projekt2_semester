@@ -18,12 +18,15 @@ public:
 	void prepareNewMessageFromPc();
 	void sendMessage();
 	void prepareMessageTox10(const char* a);
+	void Login();
 	void printStartMenu() const; 
+
 
 private:
 	int byteReceived;
 	PC_IF* pcPtr;
 	x10_Sender* senderPtr;
 	DE2_IF* DE2Ptr_;
+	int printCounter_ =0;
 
 };
