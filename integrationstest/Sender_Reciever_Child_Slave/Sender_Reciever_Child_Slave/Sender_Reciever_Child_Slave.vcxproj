@@ -120,6 +120,15 @@
     <ClCompile Include="Slave_Child.cpp" />
     <ClCompile Include="x10_reciever.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\ArrayCompareFinal.h" />
+    <ClInclude Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\x10_reciever.h" />
+    <ClInclude Include="__vm\.Sender_Reciever_Child_Slave.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\ArrayCompareFinal.cpp" />
+    <ClCompile Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\x10_reciever.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -51,7 +51,7 @@ bool Slave_Array_Read::AdresseSekvensValidate(int arrayIn[])
 		}
 		for (int j = 4; j <= 11; j++)
 		{
-			if (arrayIn[j] == curtain[j])
+			if (arrayIn[j] == stop[j])
 			{
 				match_stop++;
 			}

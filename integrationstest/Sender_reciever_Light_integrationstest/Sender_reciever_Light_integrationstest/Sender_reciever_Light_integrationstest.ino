@@ -12,6 +12,10 @@
 
 x10_reciever reciever;
 ArrayCompareFinal compareModule;
+Slave_Array_Read B;
+
+
+
 ISR(INT3_vect)
 {
 
@@ -22,7 +26,6 @@ ISR(INT3_vect)
 
 }
 void setup() {
-	Serial.begin(9600); // sætter Baudrate
 	reciever.initReciever();
 
 
@@ -51,16 +54,9 @@ void loop() {
 		{
 			Serial.println(element);
 		}
-		//Kald elisabeths funktions-v?lger shit
-		// SE MIG SE MIG SE MIG
-		// SE MIG SE MIG SE MIG
-		// SE MIG SE MIG SE MIG
-		// SE MIG SE MIG SE MIG
-		// SE MIG SE MIG SE MIG
-		// HER SKAL INDSAETTES DIT OBJEKT.denOnskedeFunktion(reciever._messageArray);
-		// fx
-		//arrayReader.FunctionsValidateCall(reciever._messageArray);
+	
+		B.FunctionsValidateCall(reciever._messageArray);
 		reciever.setMessageDone(false);
-		sei();
+		sei(); 
 	}
 }

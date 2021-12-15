@@ -30,12 +30,24 @@
     <ClInclude Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\ArrayCompareFinal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Light_Class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Slave_Array_read.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\x10_reciever.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\sender_reciever_curtain_integrationstest\sender_reciever_curtain_integrationstest\ArrayCompareFinal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Light_Class.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Slave_Array_read.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

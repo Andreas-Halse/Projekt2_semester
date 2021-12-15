@@ -54,6 +54,23 @@ void Control::prepareMessageTox10(const char* a)
 }
 
 /*@Autor: Julie Zepernick Jepsen
+* @brief check password call checkPassword() via pointer
+* 
+*/
+void Control::Login()
+{
+	
+
+	if (printCounter_ <= 0)
+	{
+		DE2Ptr_->checkPassword();
+		printStartMenu();
+		printCounter_++;
+	}
+	printCounter_ = 0;
+}
+
+/*@Autor: Julie Zepernick Jepsen
 * @brief conditional if statement with pointer to DE2 class, checking for valid password
 * Printing options to user interface
 */
