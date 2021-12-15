@@ -22,12 +22,12 @@ void setup() {
 void loop() {
 	if ((PINA & 0b00001000) == 0) // hvis SW3 er trykket
 	{
-		PORTC = 0x00;		//sæt alle ben på port C til 0
+		digitalWrite(30, LOW);		//sæt alle ben på port C til 0
 
 	}
 	else
 	{
-		PORTC = 0xFF;		//ellers sæt alle ben på port C til 1. 
+		digitalWrite(30, HIGH);		//ellers sæt alle ben på port C til 1. 
 	}
 }
 

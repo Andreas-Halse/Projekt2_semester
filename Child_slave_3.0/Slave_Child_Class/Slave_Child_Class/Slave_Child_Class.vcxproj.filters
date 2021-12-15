@@ -9,46 +9,34 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Misc Files">
+    <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>xml;json;txt;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\arduino folders read me.txt">
-      <Filter>Misc Files</Filter>
-    </None>
+    <None Include="Slave_Child_Class.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ArrayCompareFinal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Slave_Array_Read_cpp.h">
+    <ClInclude Include="__vm\.Slave_Child_Class.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Slave_Child.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="x10_reciever.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="__vm\.Sender_Reciever_Child_Slave.vsarduino.h">
+    <ClInclude Include="Slave_Array_Read_cpp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Array_child.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ArrayCompareFinal.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Slave_Child.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="x10_reciever.cpp">
+    <ClCompile Include="dummyMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dummyMain.ino" />
+    <ClCompile Include="Array_child.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

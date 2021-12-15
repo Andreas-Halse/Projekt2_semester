@@ -14,7 +14,7 @@ void x10_reciever::initReciever()
 	EICRA |= 0b01000000;		// any edge
 	EIMSK |= 0b00001000;	//  activate INT3
 	sei();					// enable interrupts
-	Serial.begin(9600);		//not used in final build
+	Serial.begin(115200);		//not used in final build
 	Serial.print("starting...\n");
 }
 
