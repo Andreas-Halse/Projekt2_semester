@@ -17,11 +17,11 @@ void setup() {
 }
 
 
-DE2_IF test;	//globalt objekt til test
+DE2_IF test(false, false); 
 
 // the loop function runs over and over again until power down or reset
 void loop() {
-  
+
 	test.signalUnlock();
 	test.print();
 	test.signalPermLock();

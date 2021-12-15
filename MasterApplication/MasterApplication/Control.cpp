@@ -58,29 +58,30 @@ void Control::prepareMessageTox10(const char* a)
 * Printing options to user interface
 */
 
-void Control::printStartMenu()
+void Control::printStartMenu() const
 {
-	if (DE2Ptr_->signalUnlock())
+	do
 	{
-		Serial.print("-------------------------- \n Welcome to your Smart Home! \n -------------------------- ");
-		Serial.print("For at tænde lys, indtast O\n");
-		Serial.print("For at slukke lys, indtast F\n");
-		Serial.print("For at skrue op for lysstyrken, indtast på I\n");
-		Serial.print("For at skrue ned for lysstyrken, indtast på B\n");
-		Serial.print("For at slå låsen på kemikalieskabet til, indtast L\n");
-		Serial.print("For at slå låsen på kemikalieskabet fra, indtast D\n");
-		Serial.print("For at rulle gardinet op, indtast U\n");
-		Serial.print("For at rulle gardinet ned, indtast C\n");
-		Serial.print("For at stoppe alle systemer, indtast Q\n");
-	}
+		if (DE2Ptr_->signalUnlock())
+		{
+			Serial.print("\n-------------------------- \n Welcome to your Smart Home! \n-------------------------- \n\n");
+			Serial.print("-------LIGHTS-------\n");
+			Serial.print("To turn ON your lights:        press O\n");
+			Serial.print("To turn OFF your lights:       press F\n");
+			Serial.print("To turn UP your lights:        press I\n");
+			Serial.print("To turn DOWN your lights:      press B\n");
+			Serial.print("\n---------LOCK---------\n");
+			Serial.print("To activate lock on cabinet:   press L\n");
+			Serial.print("To deactivate lock on cabinet: press D\n");
+			Serial.print("\n-------CURTAINS-------\n");
+			Serial.print("To roll UP curtains:			press U\n");
+			Serial.print("To roll DOWN curtains:		 press C\n");
+			Serial.print("\n---- Stop system:------ \n");
+			Serial.print("To stop all systems:           press Q\n");
+		}
+	} while (!(DE2Ptr_->signalUnlock()));
 }
 
-void Control::stop()
-{
-	control.prepareMessageTox10(LightsOff);
-	control.prepareMessageTox10(DeactivateLock);
-	control.prepareMessageTox10(RollUpCurtain);
-}
 
 
 

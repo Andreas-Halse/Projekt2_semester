@@ -15,9 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="x10-reciever_cpp.ino" />
     <None Include="src\arduino folders read me.txt">
       <Filter>Misc Files</Filter>
+    </None>
+    <None Include="x10-reciever_cpp.ino">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

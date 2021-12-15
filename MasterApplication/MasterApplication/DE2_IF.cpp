@@ -11,6 +11,8 @@ DE2_IF::DE2_IF(bool sigUnlock, bool sigPermLock)
 {
 	signalUnlock_ = sigUnlock;
 	signalPermLock_ = sigPermLock;
+	allowPrint_ = true;
+
 }
 
 /*
@@ -50,23 +52,25 @@ void DE2_IF::signalPermLock()
 /*
 * @brief $name to print out messages via UART COM port
 */
-void DE2_IF::print() const
+void DE2_IF::Login()
 {
 	//if statement to print pass / fail of password entry
 	if (signalUnlock_ == true)
 	{
-		Serial.print("Password Correct \n");
+			Serial.print("Password Correct \n");
 	}
+
 	else if (signalUnlock_ == false)
 	{
-		Serial.print("Password Incorrect \n");
+			Serial.print("Password Incorrect \n");
 	}
 
 	//if statement to print permLock mode
 	if (signalPermLock_ == true)
 	{
-		Serial.print("System is in permanent lock. \n Please go to user manual for reset. ");
+			Serial.print("System is in permanent lock. \n Please go to user manual for reset. ");
 	}
+
 }
 
 

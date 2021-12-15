@@ -1,9 +1,6 @@
 #include "Lys_Class.h"
 #include "Slave_Array_read.h"
 
-#include "Slave_Array_Read.h"
-#include "Lys_Class.h"
-
 /*
 d. 13-12-2021
 author: 1. version:  Elisabeth, sekundær: Andreas.
@@ -22,7 +19,7 @@ bool Slave_Array_Read_cpp::StartSekvensValidate(int arrayIn[])
 	for (int i = 0; i <= 3; i++)	// tjekker startbit sekvens er ens
 	{
 
-		if (arrayIn[i] == light_array[i])
+		if (arrayIn[i] == light[i])
 		{
 			startSekvens = true;
 		}
@@ -45,7 +42,7 @@ bool Slave_Array_Read_cpp::AdresseSekvensValidate(int arrayIn[])
 	{
 		for (int j = 4; j <= 11; j++)
 		{
-			if (arrayIn[j] == light_array[j])
+			if (arrayIn[j] == light[j])
 			{
 				adresseSekvens = true;
 			}
@@ -102,13 +99,4 @@ void Slave_Array_Read_cpp::FunctionsValidateCall(int arrayIn[])
 	{
 		// udskriv fejlmeddelse2 ( start sek.er ikke ens)
 	}
-
-
-
-
-
-
-
-
-
 }
