@@ -3,60 +3,33 @@
 #include <Arduino.h>
 #include <avr/io.h>
 Slave_Array_Read test;
-int testOn[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,1,0,0,0,0 };
 
-int  testOff[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,0,0,0 };
+ int llightOn[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1,1,0,0,0,0 };
 
-int testIncrease[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,0,0,0 };
+ int llightOff[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,1,0,0,0,0 };
 
-int testDecrease[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,0,0,0,0 };
+ int lincreaseBrightness[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,0,0,0 };
+
+ int ldecreaseBrightness[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,0,0,0,0 };
+
+ int lstop[35] = { 1,1,1,0,0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,0,1,0,0,1,0,1,0,1,0,1,1,0,0,0,0 };
+
 void setup()
 {
-  
-
-
-    Serial.begin(9600); // ster Baudrate
-    //pinMode(35, OUTPUT);
-    Serial.print("tis");
-    
-
+    Serial.begin(115200);
+    pinMode(2, OUTPUT);
+    test.FunctionsValidateCall(llightOn);
+    _delay_ms(2500);
+    test.FunctionsValidateCall(ldecreaseBrightness);
+    _delay_ms(2500);
+    test.FunctionsValidateCall(ldecreaseBrightness);
+    _delay_ms(2500);
+    test.FunctionsValidateCall(ldecreaseBrightness);
 }
 
 void loop()
 {
-    Serial.print("tis");
-    test.FunctionsValidateCall(testOn);
+    
 
-    test.FunctionsValidateCall(testDecrease);
-    //test.FunctionsValidateCall(testDecrease);
-    _delay_ms(10000);
 
 }
-/*int main()
-{
-    int testOn[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,0,1,1,0,1,0,0,1,0,1,1,0,1,0,1,0,0,0,0 };
-
-    int  testOff[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,0,0,0 };
-
-    int testIncrease[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,1,0,1,0,1,0,1,0,1,0,0,1,0,1,1,0,0,0,0 };
-
-    int testDecrease[35] = { 1,1,1,0,0,1,1,0,0,1,1,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,0,0,0,0 };
-
-
-    Serial.begin(9600); // sætter Baudrate
-    //pinMode(35, OUTPUT);
-    Slave_Array_Read test;
-
-
-    for (;;)
-    {
-        Serial.print("tis")
-        test.FunctionsValidateCall(testOn);
-
-        test.FunctionsValidateCall(testDecrease); 
-        //test.FunctionsValidateCall(testDecrease);
-        _delay_ms(10000);
-
-
-    }
-}*/

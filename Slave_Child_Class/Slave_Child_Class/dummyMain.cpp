@@ -6,7 +6,7 @@
 */
 
 using namespace std;
-#include "Slave_Array_Read.h"
+#include "Slave_Array_Read_cpp.h"
 
 /*
 00..3 plads = startsekvens

@@ -9,6 +9,8 @@ author: 1. version Julie
 author: 2. version Elisabeth, Andreas
 */
 
+Lys_Class A;
+
 Slave_Array_Read::Slave_Array_Read()
 {
 }
@@ -71,11 +73,9 @@ bool Slave_Array_Read::AdresseSekvensValidate(int arrayIn[])
 
 void Slave_Array_Read::FunctionsValidateCall(int arrayIn[])
 {
-    Lys_Class A;
 
     if (StartSekvensValidate(arrayIn) == true)
     {
-        A.turnOn();
         if (AdresseSekvensValidate(arrayIn) == true)
         {
             
@@ -109,26 +109,27 @@ void Slave_Array_Read::FunctionsValidateCall(int arrayIn[])
             }
             if (counter_lightOn == 16)
             {
-                Serial.print("Turnedon");
+                Serial.print("Turned on ");
                 A.turnOn();
             }
             if (counter_lightOff == 16)
             {
+                Serial.print("Turned off ");
                 A.turnOff();
             }
             if (counter_increaseBrightness == 16)
             {
-                Serial.print("increased");
+                Serial.print("increased ");
                 A.increaseBrightness();
             }
             if (counter_decreaseBrightness == 16)
             {
-                Serial.print("Decreased");
+                Serial.print("Decreased ");
                 A.decreaseBrightness();
             }
             if (counter_stop == 16)
             {
-                A.turnOff();
+                  A.turnOff();
             }
         }
     }
