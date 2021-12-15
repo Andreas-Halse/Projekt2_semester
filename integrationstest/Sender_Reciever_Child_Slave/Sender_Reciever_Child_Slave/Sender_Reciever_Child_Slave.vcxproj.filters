@@ -20,4 +20,23 @@
       <Filter>Misc Files</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.Sender_Reciever_Child_Slave.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\ArrayCompareFinal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\x10_reciever.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\ArrayCompareFinal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Sender_reciever_Light_integrationstest\Sender_reciever_Light_integrationstest\x10_reciever.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

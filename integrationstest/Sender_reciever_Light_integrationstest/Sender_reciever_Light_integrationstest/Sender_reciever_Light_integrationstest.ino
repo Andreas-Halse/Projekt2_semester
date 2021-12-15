@@ -12,6 +12,9 @@
 
 x10_reciever reciever;
 ArrayCompareFinal compareModule;
+
+
+
 ISR(INT3_vect)
 {
 
@@ -51,7 +54,7 @@ void loop() {
 		{
 			Serial.println(element);
 		}
-		//Kald elisabeths funktions-v?lger shit
+		//Kald elisabeths funktions-vaelger shit
 		// SE MIG SE MIG SE MIG
 		// SE MIG SE MIG SE MIG
 		// SE MIG SE MIG SE MIG
