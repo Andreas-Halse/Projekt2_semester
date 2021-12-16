@@ -51,7 +51,7 @@ bool Slave_Array_Read::AdresseSekvensValidate(int arrayIn[])
         }
         for (int k = 4; k <= 11; k++)
         {
-            if (arrayIn[k] == light[k])
+            if (arrayIn[k] == stop[k])
             {
                 match_stop++;
             }

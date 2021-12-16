@@ -27,8 +27,6 @@ ISR(INT3_vect)
 }
 void setup() {
 	reciever.initReciever();
-
-
 }
 
 // the loop function runs over and over again until power down or reset
